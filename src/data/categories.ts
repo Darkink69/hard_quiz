@@ -19,7 +19,7 @@ export const categories: Category[] = [
   {
     id: "90s",
     name: "Евроденс 90-х",
-    description: "Зажигательные евроденс хиты",
+    description: "Дискотечные Евроденс хиты",
     icon: "💃",
     color: "from-purple-500 to-pink-500",
     file: "74.json",
@@ -41,9 +41,17 @@ export const categories: Category[] = [
     file: "408.json",
   },
   {
+    id: "rock",
+    name: "Русский рок",
+    description: "«Если есть в кармане пачка..»",
+    icon: "🧸",
+    color: "from-green-500 to-emerald-500",
+    file: "42.json",
+  },
+  {
     id: "shan",
     name: "Шансон",
-    description: "Лучшие песни всех лет",
+    description: "Лучшие блатные песни всех лет",
     icon: "🕺",
     color: "from-blue-500 to-cyan-500",
     file: "50.json",
