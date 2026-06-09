@@ -105,3 +105,20 @@
     gap: 1rem;
   }
 }
+
+/* Анимация для очков */
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+.animate-bounce {
+  animation: bounce 0.5s ease-out;
+  pointer-events: none;
+}

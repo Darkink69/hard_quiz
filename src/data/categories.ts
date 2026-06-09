@@ -34,11 +34,19 @@ export const categories: Category[] = [
   },
   {
     id: "kids",
-    name: "Детские мультфильмы и фильмы СССР",
-    description: "Песни из любимых мультфильмов",
+    name: "Каникулы в СССР",
+    description: "Песни из детских мультфильмов и фильмов",
     icon: "🧸",
     color: "from-green-500 to-emerald-500",
     file: "408.json",
+  },
+  {
+    id: "kids2",
+    name: "Детские песни",
+    description: "Песни для детей всех времен",
+    icon: "🧸",
+    color: "from-green-500 to-emerald-500",
+    file: "93.json",
   },
   {
     id: "rock",
