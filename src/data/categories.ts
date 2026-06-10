@@ -90,6 +90,24 @@ export const categories: Category[] = [
     file: "97.json",
     difficulty: 3,
   },
+  {
+    id: "trend",
+    name: "В тренде!",
+    description: "Современная русская поп-музыка",
+    icon: "🎻",
+    color: "from-purple-500 to-pink-500",
+    file: "390.json",
+    difficulty: 2,
+  },
+  {
+    id: "euro",
+    name: "Евро хиты!",
+    description: "Современная популярная музыка",
+    icon: "🎤",
+    color: "from-blue-500 to-cyan-500",
+    file: "82.json",
+    difficulty: 2,
+  },
 ];
 
 // Функция для получения текста сложности

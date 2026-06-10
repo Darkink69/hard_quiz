@@ -49,10 +49,10 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
 
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            🎵 Музыкальный Квиз
+            Квиз - фиг угадаешь
           </h1>
           <p className="text-xl text-purple-200">
-            Выберите категорию и проверьте свои знания!
+            Выберите категорию, да посложнее!
           </p>
         </div>
 
@@ -94,16 +94,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
         </div>
 
         <div className="text-center mt-12 text-purple-200 text-sm">
-          <p>
-            🎯 Угадайте трек за 20 секунд! Выбирайте правильный вариант из 4
-            предложенных.
-          </p>
-          <p className="mt-2">
-            ✨ 7 увлекательных раундов с разными условиями ✨
-          </p>
-          <p className="mt-2 text-yellow-300">
-            💡 Очки умножаются на сложность категории (×1, ×2, ×3)
-          </p>
+          <p>🎯 Посмотрим, какой вы меломан...</p>
         </div>
       </div>
 

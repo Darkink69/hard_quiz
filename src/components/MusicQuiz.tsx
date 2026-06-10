@@ -571,9 +571,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             {showTitleForRound && currentTrack && (
               <div className="text-center py-8">
                 <div className="bg-purple-100 rounded-xl p-6 max-w-md mx-auto">
-                  <p className="text-sm text-purple-600 mb-2">
+                  {/* <p className="text-sm text-purple-600 mb-2">
                     Название трека:
-                  </p>
+                  </p> */}
                   <h3 className="text-2xl md:text-3xl font-bold text-purple-800">
                     {currentTrack.titleTrack}
                   </h3>
