@@ -24,12 +24,14 @@ interface MusicQuizProps {
   category: Category;
   onBack: () => void;
   onUpdateGlobalScore: (score: number) => void;
+  difficulty: number;
 }
 
 const MusicQuiz: React.FC<MusicQuizProps> = ({
   category,
   onBack,
   onUpdateGlobalScore,
+  difficulty,
 }) => {
   const playerRef = useRef<AudioPlayer>(null);
   const countdownIntervalRef = useRef<number | null>(null);
@@ -44,7 +46,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   const [totalScore, setTotalScore] = useState<number>(0);
   const [roundScore, setRoundScore] = useState<number | null>(null);
   const [showScoreAnimation, setShowScoreAnimation] = useState<boolean>(false);
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [_isCorrect, setIsCorrect] = useState<boolean>(false);
   const [countdown, setCountdown] = useState<number>(20);
   const [isQuizActive, setIsQuizActive] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -60,6 +62,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   const [trackLoadProgress, setTrackLoadProgress] = useState<number>(0);
   const [showListenButton, setShowListenButton] = useState<boolean>(true);
   const [showCoverForRound, setShowCoverForRound] = useState<boolean>(false);
+  const [showTitleForRound, setShowTitleForRound] = useState<boolean>(false);
+  const [showTrackInfoForGuessCover, setShowTrackInfoForGuessCover] =
+    useState<boolean>(false);
 
   // Инициализация звуков
   useEffect(() => {
@@ -95,10 +100,25 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     }
   };
 
+  // Расчет штрафа (10% от очков раунда)
+  const calculatePenalty = (points: number): number => {
+    return Math.floor(points * 0.1);
+  };
+
   // Показ анимации очков и проигрывание звука
-  const showPointsAnimation = (correct: boolean, points: number) => {
-    setRoundScore(correct ? points : 0);
-    setIsCorrect(correct);
+  const showPointsAnimation = (
+    correct: boolean,
+    points: number,
+    isPenalty: boolean = false,
+  ) => {
+    if (isPenalty) {
+      setRoundScore(-points);
+      setIsCorrect(false);
+    } else {
+      setRoundScore(correct ? points : 0);
+      setIsCorrect(correct);
+    }
+
     setShowScoreAnimation(true);
 
     // Проигрываем соответствующий звук
@@ -107,7 +127,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       winSoundRef.current
         .play()
         .catch((e) => console.log("Звук не воспроизвелся:", e));
-    } else if (!correct && lostSoundRef.current) {
+    } else if ((!correct || isPenalty) && lostSoundRef.current) {
       lostSoundRef.current.currentTime = 0;
       lostSoundRef.current
         .play()
@@ -125,14 +145,11 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     if (!track || track.duration <= 0) return 0;
 
     if (currentRoundConfig.useIntro) {
-      // Для вступления - начало трека
       return 0;
     } else if (currentRoundConfig.useOutro) {
-      // Для концовки - последние 20 секунд или меньше
       const outroTime = Math.max(0, track.duration - 20);
       return outroTime;
     } else {
-      // Обычный режим - первая половина трека
       const maxStartTime = track.duration / 2;
       const randomSeconds = Math.random() * maxStartTime;
       return Math.round(randomSeconds * 100) / 100;
@@ -255,8 +272,15 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       if (timeLeft <= 0) {
         clearCountdown();
         stopMusic();
+
+        // Время вышло - начисляем штраф
+        const penalty = calculatePenalty(
+          currentRoundConfig.points * difficulty,
+        );
+        const newScore = totalScore - penalty;
+        setTotalScore(newScore);
         setAnswerSelected(true);
-        showPointsAnimation(false, 0);
+        showPointsAnimation(false, penalty, true);
 
         const updatedOptions = answerOptions.map((opt) => ({
           ...opt,
@@ -279,20 +303,33 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     setTrackLoadProgress(0);
 
     try {
-      console.log("Начинаем загрузку трека...");
-      await preloadAudio(currentTrack.audiofile);
-      setTrackLoadProgress(100);
-
-      await new Promise((resolve) => setTimeout(resolve, 500));
-
-      // Для раунда с обложкой не нужно загружать трек
+      // Для разных типов раундов
       if (currentRoundConfig.type === "coverOnly") {
         setShowCoverForRound(true);
         setHasStarted(true);
         setIsTrackLoading(false);
         startCountdown();
         return;
+      } else if (currentRoundConfig.type === "guessExecutor") {
+        setShowTitleForRound(true);
+        setHasStarted(true);
+        setIsTrackLoading(false);
+        startCountdown();
+        return;
+      } else if (currentRoundConfig.type === "guessCover") {
+        // Для 6 раунда показываем название трека и исполнителя
+        setShowTrackInfoForGuessCover(true);
+        setHasStarted(true);
+        setIsTrackLoading(false);
+        startCountdown();
+        return;
       }
+
+      console.log("Начинаем загрузку трека...");
+      await preloadAudio(currentTrack.audiofile);
+      setTrackLoadProgress(100);
+
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       const startPosition = generateRandomTime(currentTrack);
       setRandomTime(startPosition);
@@ -327,7 +364,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
   const nextRound = () => {
     if (isLastRound) {
-      // Проигрываем звук победы в раунде
       if (winMidSoundRef.current) {
         winMidSoundRef.current.currentTime = 0;
         winMidSoundRef.current
@@ -335,7 +371,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           .catch((e) => console.log("Звук не воспроизвелся:", e));
       }
 
-      // Сохраняем общий результат через callback
       onUpdateGlobalScore(totalScore);
       setQuizCompleted(true);
       setIsQuizActive(false);
@@ -343,7 +378,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       return;
     }
 
-    // Переход к следующему раунду
     setCurrentRound((prev) => prev + 1);
     setHasStarted(false);
     setIsQuizActive(true);
@@ -353,8 +387,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     setShowListenButton(true);
     setRandomTime(null);
     setShowCoverForRound(false);
+    setShowTitleForRound(false);
+    setShowTrackInfoForGuessCover(false);
 
-    // Выбираем новый трек для следующего раунда
     selectRandomTrackAndOptions(tracks);
   };
 
@@ -375,16 +410,20 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
     if (option.isCorrect) {
       console.log("Правильный ответ!");
-      const newScore = totalScore + currentRoundConfig.points;
+      const roundPointsWithMultiplier = currentRoundConfig.points * difficulty;
+      const newScore = totalScore + roundPointsWithMultiplier;
       setTotalScore(newScore);
-      showPointsAnimation(true, currentRoundConfig.points);
+      showPointsAnimation(true, roundPointsWithMultiplier);
 
       setTimeout(() => {
         nextRound();
       }, 1500);
     } else {
       console.log("Неправильный ответ!");
-      showPointsAnimation(false, 0);
+      const penalty = calculatePenalty(currentRoundConfig.points * difficulty);
+      const newScore = totalScore - penalty;
+      setTotalScore(newScore);
+      showPointsAnimation(false, penalty, true);
 
       setTimeout(() => {
         nextRound();
@@ -404,6 +443,8 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     setShowListenButton(true);
     setRandomTime(null);
     setShowCoverForRound(false);
+    setShowTitleForRound(false);
+    setShowTrackInfoForGuessCover(false);
     selectRandomTrackAndOptions(tracks);
   };
 
@@ -464,58 +505,40 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       {/* Анимация очков */}
       {showScoreAnimation && roundScore !== null && (
         <div
-          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 text-6xl md:text-8xl font-bold animate-bounce ${isCorrect ? "text-green-500" : "text-red-500"}`}
+          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 text-6xl md:text-8xl font-bold animate-bounce ${roundScore > 0 ? "text-green-500" : "text-red-500"}`}
         >
-          {isCorrect ? `+${roundScore}` : "+0"}
+          {roundScore > 0 ? `+${roundScore}` : `${roundScore}`}
         </div>
       )}
 
       <div className="container mx-auto max-w-4xl">
-        {/* Кнопка назад */}
+        {/* Верхняя панель с названием категории и раундом */}
         <div className="flex justify-between items-center mb-4">
-          <button
-            onClick={onBack}
-            className="inline-flex items-center gap-2 text-white hover:text-purple-200 transition-colors"
-          >
-            ← Назад к категориям
-          </button>
+          <div className="text-white text-xl font-bold">{category.name}</div>
+          <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white font-bold">
+            Раунд {currentRound + 1}/{rounds.length}
+          </div>
         </div>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          {/* Верхняя секция с информацией о категории и раунде */}
+          {/* Верхняя секция с информацией о раунде - убрали имя раунда, оставили только описание */}
           <div
             className={`bg-linear-to-r ${category.color} p-4 md:p-6 text-white`}
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-3xl">{category.icon}</span>
-                <div>
-                  <h2 className="text-xl md:text-2xl font-bold">
-                    {category.name}
-                  </h2>
-                  <p className="text-white/90 text-sm">
-                    {category.description}
-                  </p>
-                </div>
-              </div>
-              {!quizCompleted && currentRoundConfig && (
-                <div className="text-right">
-                  <div className="text-sm opacity-90">
-                    Раунд {currentRound + 1}/{rounds.length}
-                  </div>
-                  <div className="text-lg font-bold">
-                    {currentRoundConfig.name}
-                  </div>
-                </div>
-              )}
+            <div className="text-center">
+              <p className="text-lg md:text-xl font-semibold">
+                {currentRoundConfig.description}
+              </p>
             </div>
           </div>
 
           {/* Основной контент */}
           <div className="p-4 md:p-6">
-            {/* Аудио плеер (скрытый) - не показываем для раунда с обложкой */}
+            {/* Аудио плеер (скрытый) */}
             {currentTrack.audiofile &&
-              currentRoundConfig.type !== "coverOnly" && (
+              currentRoundConfig.type !== "coverOnly" &&
+              currentRoundConfig.type !== "guessExecutor" &&
+              currentRoundConfig.type !== "guessCover" && (
                 <div hidden>
                   <AudioPlayer
                     ref={playerRef}
@@ -529,7 +552,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                 </div>
               )}
 
-            {/* Отображение обложки для 4 раунда - круглая */}
+            {/* Отображение обложки для раунда coverOnly */}
             {showCoverForRound && currentTrack && (
               <div className="text-center py-8">
                 <img
@@ -544,40 +567,78 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
               </div>
             )}
 
+            {/* Отображение названия трека для раунда guessExecutor */}
+            {showTitleForRound && currentTrack && (
+              <div className="text-center py-8">
+                <div className="bg-purple-100 rounded-xl p-6 max-w-md mx-auto">
+                  <p className="text-sm text-purple-600 mb-2">
+                    Название трека:
+                  </p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-purple-800">
+                    {currentTrack.titleTrack}
+                  </h3>
+                </div>
+                <p className="mt-4 text-gray-600">Кто исполняет эту песню?</p>
+              </div>
+            )}
+
+            {/* Отображение названия трека и исполнителя для раунда guessCover (6 раунд) */}
+            {showTrackInfoForGuessCover && currentTrack && (
+              <div className="text-center py-8">
+                <div className="bg-purple-100 rounded-xl p-6 max-w-md mx-auto">
+                  <p className="text-sm text-purple-600 mb-2">
+                    Название песни:
+                  </p>
+                  <h3 className="text-2xl md:text-3xl font-bold text-purple-800 mb-3">
+                    {currentTrack.titleTrack}
+                  </h3>
+                  <p className="text-sm text-purple-600 mb-2">Исполнитель:</p>
+                  <p className="text-xl md:text-2xl font-semibold text-purple-700">
+                    {currentTrack.titleExecutor}
+                  </p>
+                </div>
+                <p className="mt-4 text-gray-600">
+                  Выберите правильную обложку!
+                </p>
+              </div>
+            )}
+
             {/* Кнопка "Слушать" или индикатор загрузки */}
             {!quizCompleted && (
               <>
                 {showListenButton ? (
                   <div className="text-center py-12">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-lg font-semibold text-purple-800">
-                        {currentRoundConfig.description}
-                      </p>
                       <p className="text-sm text-gray-600 mt-2">
                         💰 Очков за победу: {currentRoundConfig.points}
+                        <span className="text-purple-600 font-semibold ml-2">
+                          (×{difficulty} ={" "}
+                          {currentRoundConfig.points * difficulty})
+                        </span>
                       </p>
                     </div>
                     <button
                       onClick={startListening}
                       className="px-8 py-4 bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold text-xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
                     >
-                      Начать
+                      Играть
                     </button>
                   </div>
                 ) : isTrackLoading && !hasStarted ? (
                   <div className="text-center py-12">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-lg font-semibold text-purple-800">
-                        {currentRoundConfig.description}
-                      </p>
                       <p className="text-sm text-gray-600 mt-2">
                         💰 Очков за победу: {currentRoundConfig.points}
+                        <span className="text-purple-600 font-semibold ml-2">
+                          (×{difficulty} ={" "}
+                          {currentRoundConfig.points * difficulty})
+                        </span>
                       </p>
                     </div>
                     <div className="inline-flex flex-col items-center gap-3">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
                       <div className="text-gray-600">
-                        Загрузка трека... {Math.round(trackLoadProgress)}%
+                        Загрузка задания... {Math.round(trackLoadProgress)}%
                       </div>
                       <div className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
                         <div
@@ -590,7 +651,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                 ) : (
                   hasStarted && (
                     <>
-                      {/* Таймер и статус игры */}
+                      {/* Таймер */}
                       <div className="text-center mb-6">
                         <div className="inline-flex items-center gap-2 bg-purple-100 rounded-full px-4 py-2">
                           <span className="text-2xl font-bold text-purple-600">
@@ -605,7 +666,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                       {/* Варианты ответов */}
                       <div className="mt-6">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4 text-center">
-                          Выберите правильный трек:
+                          Выберите правильный вариант:
                         </h3>
                         <div className="grid grid-cols-2 gap-3 md:gap-4">
                           {answerOptions.map((option) => {
@@ -622,15 +683,16 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                               }
                             }
 
-                            // Определяем, показывать ли обложку в вариантах ответа
-                            const showCoverInOption =
-                              currentRoundConfig.type !== "coverOnly";
-                            // Определяем, показывать ли название трека
-                            const showTrackTitle =
-                              !currentRoundConfig.hideTrackTitle;
-                            // Для 5 раунда показываем только исполнителя крупно, без дублирования
+                            // Для разных типов раундов показываем разные данные
+                            const isRound4 =
+                              currentRoundConfig.type === "guessExecutor";
+                            const isRound6 =
+                              currentRoundConfig.type === "guessCover";
                             const isRound5 =
                               currentRoundConfig.type === "noTitle";
+                            const showCoverInOption =
+                              currentRoundConfig.type !== "coverOnly" &&
+                              !isRound6;
 
                             return (
                               <button
@@ -647,7 +709,24 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                               >
                                 <div className="p-3 md:p-4">
                                   <div className="flex flex-col items-center text-center">
-                                    {showCoverInOption &&
+                                    {isRound6 ? (
+                                      // Раунд 6 - показываем только обложки без текста
+                                      <div className="w-24 h-24 md:w-28 md:h-28">
+                                        <img
+                                          src={
+                                            option.track.coverHTTP ||
+                                            "https://via.placeholder.com/112x112?text=🎵"
+                                          }
+                                          alt="Обложка"
+                                          className="w-full h-full rounded-lg object-cover shadow-md"
+                                          onError={(e) => {
+                                            (e.target as HTMLImageElement).src =
+                                              "https://via.placeholder.com/112x112?text=🎵";
+                                          }}
+                                        />
+                                      </div>
+                                    ) : (
+                                      showCoverInOption &&
                                       option.track.coverHTTP && (
                                         <div className="w-20 h-20 md:w-24 md:h-24 mb-3">
                                           <img
@@ -662,26 +741,30 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                                             }}
                                           />
                                         </div>
-                                      )}
+                                      )
+                                    )}
                                     <div className="flex-1 w-full">
-                                      {isRound5 ? (
-                                        // Для 5 раунда показываем только исполнителя крупно
+                                      {isRound4 ? (
+                                        // Раунд 4 - показываем только исполнителя
+                                        <h4 className="font-semibold text-gray-800 text-base md:text-lg wrap-break-word">
+                                          {option.track.titleExecutor}
+                                        </h4>
+                                      ) : isRound5 ? (
+                                        // Раунд 5 - показываем только исполнителя крупно
                                         <h4 className="font-semibold text-gray-800 text-base md:text-lg wrap-break-word">
                                           {option.track.titleExecutor}
                                         </h4>
                                       ) : (
-                                        <>
-                                          <h4 className="font-semibold text-gray-800 text-sm md:text-base wrap-break-word">
-                                            {showTrackTitle
-                                              ? option.track.titleTrack
-                                              : option.track.titleExecutor}
-                                          </h4>
-                                          {showTrackTitle && (
+                                        !isRound6 && (
+                                          <>
+                                            <h4 className="font-semibold text-gray-800 text-sm md:text-base wrap-break-word">
+                                              {option.track.titleTrack}
+                                            </h4>
                                             <p className="text-xs md:text-sm text-gray-600 mt-1 wrap-break-word">
                                               {option.track.titleExecutor}
                                             </p>
-                                          )}
-                                        </>
+                                          </>
+                                        )
                                       )}
                                     </div>
                                     {option.showResult && option.isCorrect && (
@@ -721,6 +804,14 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                     Ваш результат в этой игре:
                   </p>
                   <p className="text-white text-5xl font-bold">{totalScore}</p>
+                  {difficulty > 1 && (
+                    <div className="mt-3 text-white/90 text-sm border-t border-white/20 pt-3">
+                      <p>✨ Множитель сложности: ×{difficulty}</p>
+                      <p className="text-xs mt-1">
+                        Все очки умножены на коэффициент сложности категории
+                      </p>
+                    </div>
+                  )}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button

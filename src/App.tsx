@@ -45,6 +45,7 @@ function App() {
           category={selectedCategory}
           onBack={handleBack}
           onUpdateGlobalScore={handleUpdateGlobalScore}
+          difficulty={selectedCategory.difficulty}
         />
       )}
     </div>
