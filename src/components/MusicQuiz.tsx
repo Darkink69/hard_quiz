@@ -65,6 +65,8 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   const [showTitleForRound, setShowTitleForRound] = useState<boolean>(false);
   const [showTrackInfoForGuessCover, setShowTrackInfoForGuessCover] =
     useState<boolean>(false);
+  const [isNewRecord, setIsNewRecord] = useState<boolean>(false);
+  const [bonusScore, setBonusScore] = useState<number>(0);
 
   // Инициализация звуков
   useEffect(() => {
@@ -88,6 +90,53 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       clearInterval(countdownIntervalRef.current);
       countdownIntervalRef.current = null;
     }
+  };
+
+  // Функция для обновления рекорда и получения бонуса
+  const checkAndUpdateHighScore = (
+    score: number,
+  ): { isNewRecord: boolean; bonus: number } => {
+    const currentHighScore = localStorage.getItem("gameHighScore");
+    const currentHighScoreNumber = currentHighScore
+      ? parseInt(currentHighScore, 10)
+      : 0;
+
+    if (score > currentHighScoreNumber) {
+      const bonus = 500;
+      const newHighScore = score + bonus;
+      localStorage.setItem("gameHighScore", newHighScore.toString());
+      console.log(`🎉 Новый рекорд! +${bonus} бонусных очков!`);
+      console.log(`   Был рекорд: ${currentHighScoreNumber}`);
+      console.log(`   Результат игры: ${score}`);
+      console.log(`   Новый рекорд: ${newHighScore}`);
+
+      // Отправляем событие для обновления в CategorySelect
+      window.dispatchEvent(new Event("storage"));
+
+      return { isNewRecord: true, bonus };
+    }
+
+    return { isNewRecord: false, bonus: 0 };
+  };
+
+  // Показ анимации бонуса за рекорд
+  const showBonusAnimation = (bonus: number) => {
+    setBonusScore(bonus);
+    setIsNewRecord(true);
+    setShowScoreAnimation(true);
+
+    if (winSoundRef.current) {
+      winSoundRef.current.currentTime = 0;
+      winSoundRef.current
+        .play()
+        .catch((e) => console.log("Звук не воспроизвелся:", e));
+    }
+
+    setTimeout(() => {
+      setShowScoreAnimation(false);
+      setIsNewRecord(false);
+      setBonusScore(0);
+    }, 3000);
   };
 
   // Функция для остановки музыки
@@ -155,6 +204,24 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       return Math.round(randomSeconds * 100) / 100;
     }
   };
+
+  // Функция для обновления рекорда
+  // const updateHighScore = (score: number) => {
+  //   const currentHighScore = localStorage.getItem("gameHighScore");
+  //   const currentHighScoreNumber = currentHighScore
+  //     ? parseInt(currentHighScore, 10)
+  //     : 0;
+
+  //   if (score > currentHighScoreNumber) {
+  //     localStorage.setItem("gameHighScore", score.toString());
+  //     console.log(
+  //       `🎉 Новый рекорд! ${score} очков (было: ${currentHighScoreNumber})`,
+  //     );
+
+  //     // Отправляем событие для обновления в CategorySelect
+  //     window.dispatchEvent(new Event("storage"));
+  //   }
+  // };
 
   // Загрузка треков из JSON файла
   useEffect(() => {
@@ -371,7 +438,19 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           .catch((e) => console.log("Звук не воспроизвелся:", e));
       }
 
-      onUpdateGlobalScore(totalScore);
+      // Проверяем рекорд и получаем бонус
+      const { isNewRecord: recordAchieved, bonus } =
+        checkAndUpdateHighScore(totalScore);
+
+      if (recordAchieved) {
+        // Показываем анимацию бонуса
+        showBonusAnimation(bonus);
+        // Обновляем общий счет с бонусом
+        onUpdateGlobalScore(totalScore + bonus);
+      } else {
+        onUpdateGlobalScore(totalScore);
+      }
+
       setQuizCompleted(true);
       setIsQuizActive(false);
       setShowListenButton(false);
@@ -448,13 +527,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     selectRandomTrackAndOptions(tracks);
   };
 
-  // const formatTime = (seconds: number): string => {
-  //   if (isNaN(seconds) || !isFinite(seconds)) return "0:00";
-  //   const mins = Math.floor(seconds / 60);
-  //   const secs = Math.floor(seconds % 60);
-  //   return `${mins}:${secs.toString().padStart(2, "0")}`;
-  // };
-
   if (isLoading) {
     return (
       <div className="min-h-screen bg-linear-to-br from-gray-900 to-purple-900 flex items-center justify-center">
@@ -508,6 +580,22 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 text-6xl md:text-8xl font-bold animate-bounce ${roundScore > 0 ? "text-green-500" : "text-red-500"}`}
         >
           {roundScore > 0 ? `+${roundScore}` : `${roundScore}`}
+        </div>
+      )}
+
+      {isNewRecord && bonusScore > 0 && (
+        <div
+          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 text-center"
+          style={{ zIndex: 1001 }}
+        >
+          <div className="animate-bounce-slow">
+            <div className="text-4xl md:text-6xl font-bold text-yellow-400 mb-2">
+              🏆 НОВЫЙ РЕКОРД! 🏆
+            </div>
+            <div className="text-3xl md:text-5xl font-bold text-green-500">
+              +{bonusScore} бонусных очков!
+            </div>
+          </div>
         </div>
       )}
 
@@ -607,14 +695,11 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             {!quizCompleted && (
               <>
                 {showListenButton ? (
-                  <div className="text-center py-12">
+                  <div className="text-center">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-sm text-gray-600 mt-2">
-                        💰 Очков за победу: {currentRoundConfig.points}
-                        <span className="text-purple-600 font-semibold ml-2">
-                          (×{difficulty} ={" "}
-                          {currentRoundConfig.points * difficulty})
-                        </span>
+                      <p className="text-lg text-gray-600">
+                        Очков за победу:{" "}
+                        {currentRoundConfig.points * difficulty}
                       </p>
                     </div>
                     <button
@@ -625,14 +710,11 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                     </button>
                   </div>
                 ) : isTrackLoading && !hasStarted ? (
-                  <div className="text-center py-12">
+                  <div className="text-center">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-sm text-gray-600 mt-2">
-                        💰 Очков за победу: {currentRoundConfig.points}
-                        <span className="text-purple-600 font-semibold ml-2">
-                          (×{difficulty} ={" "}
-                          {currentRoundConfig.points * difficulty})
-                        </span>
+                      <p className="text-lg text-gray-600 mt-2">
+                        Очков за победу:{" "}
+                        {currentRoundConfig.points * difficulty}
                       </p>
                     </div>
                     <div className="inline-flex flex-col items-center gap-3">
@@ -652,7 +734,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                   hasStarted && (
                     <>
                       {/* Таймер */}
-                      <div className="text-center mb-6">
+                      <div
+                        className={`text-center mb-6 ${countdown < 6 ? "animate-ping" : "animate-none"}`}
+                      >
                         <div className="inline-flex items-center gap-2 bg-purple-100 rounded-full px-4 py-2">
                           <span className="text-2xl font-bold text-purple-600">
                             {countdown}
@@ -804,14 +888,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                     Ваш результат в этой игре:
                   </p>
                   <p className="text-white text-5xl font-bold">{totalScore}</p>
-                  {difficulty > 1 && (
-                    <div className="mt-3 text-white/90 text-sm border-t border-white/20 pt-3">
-                      <p>✨ Множитель сложности: ×{difficulty}</p>
-                      <p className="text-xs mt-1">
-                        Все очки умножены на коэффициент сложности категории
-                      </p>
-                    </div>
-                  )}
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
@@ -831,6 +907,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             )}
           </div>
         </div>
+        <button onClick={onBack} className="mt-4 text-blue-500 cursor-pointer">
+          Выйти из игры
+        </button>
       </div>
     </div>
   );

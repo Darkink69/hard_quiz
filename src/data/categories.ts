@@ -92,7 +92,7 @@ export const categories: Category[] = [
   },
   {
     id: "trend",
-    name: "В тренде!",
+    name: "Русские в тренде!",
     description: "Современная русская поп-музыка",
     icon: "🎻",
     color: "from-purple-500 to-pink-500",
@@ -107,6 +107,33 @@ export const categories: Category[] = [
     color: "from-blue-500 to-cyan-500",
     file: "82.json",
     difficulty: 2,
+  },
+  {
+    id: "2000",
+    name: "Хиты 2000-х",
+    description: "Любимые песни начала века",
+    icon: "🎤",
+    color: "from-blue-500 to-cyan-500",
+    file: "435.json",
+    difficulty: 2,
+  },
+  {
+    id: "sssr",
+    name: "Бабушкин Хит",
+    description: "Старые песни СССР",
+    icon: "🎤",
+    color: "from-blue-500 to-cyan-500",
+    file: "46.json",
+    difficulty: 2,
+  },
+  {
+    id: "cyber",
+    name: "Открытый космос",
+    description: "Ретро электронная музыка",
+    icon: "🎻",
+    color: "from-purple-500 to-pink-500",
+    file: "79.json",
+    difficulty: 3,
   },
 ];
 
@@ -137,8 +164,3 @@ export const getDifficultyColor = (difficulty: number): string => {
       return "bg-gray-500";
   }
 };
-
-// Функция для получения множителя в текстовом виде
-// export const getDifficultyMultiplier = (difficulty: number): string => {
-//   return `×${difficulty}`;
-// };

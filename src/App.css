@@ -122,3 +122,19 @@
   animation: bounce 0.5s ease-out;
   pointer-events: none;
 }
+
+/* Анимация для рекорда */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 0.8s ease-in-out 3;
+}
