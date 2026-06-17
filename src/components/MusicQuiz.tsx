@@ -23,7 +23,7 @@ interface AnswerOption {
 interface MusicQuizProps {
   category: Category;
   onBack: () => void;
-  onUpdateGlobalScore: (score: number) => void;
+  onUpdateGlobalScore: (score: number, categoryId: string) => void;
   difficulty: number;
 }
 
@@ -38,6 +38,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   const winSoundRef = useRef<HTMLAudioElement | null>(null);
   const lostSoundRef = useRef<HTMLAudioElement | null>(null);
   const winMidSoundRef = useRef<HTMLAudioElement | null>(null);
+
+  // Используем ref для хранения актуального счета
+  const totalScoreRef = useRef<number>(0);
 
   const [tracks, setTracks] = useState<Track[]>([]);
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
@@ -65,8 +68,11 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   const [showTitleForRound, setShowTitleForRound] = useState<boolean>(false);
   const [showTrackInfoForGuessCover, setShowTrackInfoForGuessCover] =
     useState<boolean>(false);
-  const [isNewRecord, setIsNewRecord] = useState<boolean>(false);
-  const [bonusScore, setBonusScore] = useState<number>(0);
+
+  // Синхронизируем ref с state
+  useEffect(() => {
+    totalScoreRef.current = totalScore;
+  }, [totalScore]);
 
   // Инициализация звуков
   useEffect(() => {
@@ -90,53 +96,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       clearInterval(countdownIntervalRef.current);
       countdownIntervalRef.current = null;
     }
-  };
-
-  // Функция для обновления рекорда и получения бонуса
-  const checkAndUpdateHighScore = (
-    score: number,
-  ): { isNewRecord: boolean; bonus: number } => {
-    const currentHighScore = localStorage.getItem("gameHighScore");
-    const currentHighScoreNumber = currentHighScore
-      ? parseInt(currentHighScore, 10)
-      : 0;
-
-    if (score > currentHighScoreNumber) {
-      const bonus = 500;
-      const newHighScore = score + bonus;
-      localStorage.setItem("gameHighScore", newHighScore.toString());
-      console.log(`🎉 Новый рекорд! +${bonus} бонусных очков!`);
-      console.log(`   Был рекорд: ${currentHighScoreNumber}`);
-      console.log(`   Результат игры: ${score}`);
-      console.log(`   Новый рекорд: ${newHighScore}`);
-
-      // Отправляем событие для обновления в CategorySelect
-      window.dispatchEvent(new Event("storage"));
-
-      return { isNewRecord: true, bonus };
-    }
-
-    return { isNewRecord: false, bonus: 0 };
-  };
-
-  // Показ анимации бонуса за рекорд
-  const showBonusAnimation = (bonus: number) => {
-    setBonusScore(bonus);
-    setIsNewRecord(true);
-    setShowScoreAnimation(true);
-
-    if (winSoundRef.current) {
-      winSoundRef.current.currentTime = 0;
-      winSoundRef.current
-        .play()
-        .catch((e) => console.log("Звук не воспроизвелся:", e));
-    }
-
-    setTimeout(() => {
-      setShowScoreAnimation(false);
-      setIsNewRecord(false);
-      setBonusScore(0);
-    }, 3000);
   };
 
   // Функция для остановки музыки
@@ -170,7 +129,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
     setShowScoreAnimation(true);
 
-    // Проигрываем соответствующий звук
     if (correct && winSoundRef.current) {
       winSoundRef.current.currentTime = 0;
       winSoundRef.current
@@ -204,24 +162,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       return Math.round(randomSeconds * 100) / 100;
     }
   };
-
-  // Функция для обновления рекорда
-  // const updateHighScore = (score: number) => {
-  //   const currentHighScore = localStorage.getItem("gameHighScore");
-  //   const currentHighScoreNumber = currentHighScore
-  //     ? parseInt(currentHighScore, 10)
-  //     : 0;
-
-  //   if (score > currentHighScoreNumber) {
-  //     localStorage.setItem("gameHighScore", score.toString());
-  //     console.log(
-  //       `🎉 Новый рекорд! ${score} очков (было: ${currentHighScoreNumber})`,
-  //     );
-
-  //     // Отправляем событие для обновления в CategorySelect
-  //     window.dispatchEvent(new Event("storage"));
-  //   }
-  // };
 
   // Загрузка треков из JSON файла
   useEffect(() => {
@@ -340,12 +280,21 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         clearCountdown();
         stopMusic();
 
-        // Время вышло - начисляем штраф
+        console.log(`⏰ РАУНД ${currentRound + 1}: Время вышло!`);
         const penalty = calculatePenalty(
           currentRoundConfig.points * difficulty,
         );
-        const newScore = totalScore - penalty;
+        const currentScore = totalScoreRef.current;
+        const newScore = currentScore - penalty;
+        console.log(
+          `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
+        );
+        console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
+
+        // Обновляем состояние
         setTotalScore(newScore);
+        totalScoreRef.current = newScore;
+
         setAnswerSelected(true);
         showPointsAnimation(false, penalty, true);
 
@@ -370,7 +319,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     setTrackLoadProgress(0);
 
     try {
-      // Для разных типов раундов
       if (currentRoundConfig.type === "coverOnly") {
         setShowCoverForRound(true);
         setHasStarted(true);
@@ -384,7 +332,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         startCountdown();
         return;
       } else if (currentRoundConfig.type === "guessCover") {
-        // Для 6 раунда показываем название трека и исполнителя
         setShowTrackInfoForGuessCover(true);
         setHasStarted(true);
         setIsTrackLoading(false);
@@ -430,7 +377,17 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   };
 
   const nextRound = () => {
+    // Берем актуальное значение из ref
+    const currentScore = totalScoreRef.current;
+
+    console.log(`🔄 ПЕРЕХОД К СЛЕДУЮЩЕМУ РАУНДУ`);
+    console.log(`   Текущий раунд: ${currentRound + 1}/${rounds.length}`);
+    console.log(`   Текущий счет: ${currentScore}`);
+
     if (isLastRound) {
+      console.log(`🏁 ИГРА ЗАВЕРШЕНА!`);
+      console.log(`   Итоговый счет: ${currentScore}`);
+
       if (winMidSoundRef.current) {
         winMidSoundRef.current.currentTime = 0;
         winMidSoundRef.current
@@ -438,18 +395,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           .catch((e) => console.log("Звук не воспроизвелся:", e));
       }
 
-      // Проверяем рекорд и получаем бонус
-      const { isNewRecord: recordAchieved, bonus } =
-        checkAndUpdateHighScore(totalScore);
-
-      if (recordAchieved) {
-        // Показываем анимацию бонуса
-        showBonusAnimation(bonus);
-        // Обновляем общий счет с бонусом
-        onUpdateGlobalScore(totalScore + bonus);
-      } else {
-        onUpdateGlobalScore(totalScore);
-      }
+      console.log(`📤 Передаем результат игры в App: ${currentScore}`);
+      console.log(`📂 ID категории: ${category.id}`);
+      onUpdateGlobalScore(currentScore, category.id);
 
       setQuizCompleted(true);
       setIsQuizActive(false);
@@ -487,21 +435,36 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     }));
     setAnswerOptions(updatedOptions);
 
+    // Используем текущее значение из ref
+    const currentScore = totalScoreRef.current;
+
     if (option.isCorrect) {
-      console.log("Правильный ответ!");
+      console.log(`✅ РАУНД ${currentRound + 1}: Правильный ответ!`);
       const roundPointsWithMultiplier = currentRoundConfig.points * difficulty;
-      const newScore = totalScore + roundPointsWithMultiplier;
+      console.log(
+        `   База: ${currentRoundConfig.points} × ${difficulty} = ${roundPointsWithMultiplier}`,
+      );
+      const newScore = currentScore + roundPointsWithMultiplier;
+      console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
+
       setTotalScore(newScore);
+      totalScoreRef.current = newScore;
       showPointsAnimation(true, roundPointsWithMultiplier);
 
       setTimeout(() => {
         nextRound();
       }, 1500);
     } else {
-      console.log("Неправильный ответ!");
+      console.log(`❌ РАУНД ${currentRound + 1}: Неправильный ответ!`);
       const penalty = calculatePenalty(currentRoundConfig.points * difficulty);
-      const newScore = totalScore - penalty;
+      console.log(
+        `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
+      );
+      const newScore = currentScore - penalty;
+      console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
+
       setTotalScore(newScore);
+      totalScoreRef.current = newScore;
       showPointsAnimation(false, penalty, true);
 
       setTimeout(() => {
@@ -513,6 +476,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   const startNewGame = () => {
     setCurrentRound(0);
     setTotalScore(0);
+    totalScoreRef.current = 0;
     setQuizCompleted(false);
     setIsQuizActive(true);
     setHasStarted(false);
@@ -526,6 +490,13 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     setShowTrackInfoForGuessCover(false);
     selectRandomTrackAndOptions(tracks);
   };
+
+  // const formatTime = (seconds: number): string => {
+  //   if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+  //   const mins = Math.floor(seconds / 60);
+  //   const secs = Math.floor(seconds % 60);
+  //   return `${mins}:${secs.toString().padStart(2, '0')}`;
+  // };
 
   if (isLoading) {
     return (
@@ -583,22 +554,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         </div>
       )}
 
-      {isNewRecord && bonusScore > 0 && (
-        <div
-          className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 text-center"
-          style={{ zIndex: 1001 }}
-        >
-          <div className="animate-bounce-slow">
-            <div className="text-4xl md:text-6xl font-bold text-yellow-400 mb-2">
-              🏆 НОВЫЙ РЕКОРД! 🏆
-            </div>
-            <div className="text-3xl md:text-5xl font-bold text-green-500">
-              +{bonusScore} бонусных очков!
-            </div>
-          </div>
-        </div>
-      )}
-
       <div className="container mx-auto max-w-4xl">
         {/* Верхняя панель с названием категории и раундом */}
         <div className="flex justify-between items-center mb-4">
@@ -609,7 +564,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         </div>
 
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-          {/* Верхняя секция с информацией о раунде - убрали имя раунда, оставили только описание */}
+          {/* Верхняя секция с информацией о раунде */}
           <div
             className={`bg-linear-to-r ${category.color} p-4 md:p-6 text-white`}
           >
@@ -659,9 +614,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             {showTitleForRound && currentTrack && (
               <div className="text-center py-8">
                 <div className="bg-purple-100 rounded-xl p-6 max-w-md mx-auto">
-                  {/* <p className="text-sm text-purple-600 mb-2">
-                    Название трека:
-                  </p> */}
                   <h3 className="text-2xl md:text-3xl font-bold text-purple-800">
                     {currentTrack.titleTrack}
                   </h3>
@@ -670,7 +622,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
               </div>
             )}
 
-            {/* Отображение названия трека и исполнителя для раунда guessCover (6 раунд) */}
+            {/* Отображение названия трека и исполнителя для раунда guessCover */}
             {showTrackInfoForGuessCover && currentTrack && (
               <div className="text-center py-8">
                 <div className="bg-purple-100 rounded-xl p-6 max-w-md mx-auto">
@@ -767,7 +719,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                               }
                             }
 
-                            // Для разных типов раундов показываем разные данные
                             const isRound4 =
                               currentRoundConfig.type === "guessExecutor";
                             const isRound6 =
@@ -794,7 +745,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                                 <div className="p-3 md:p-4">
                                   <div className="flex flex-col items-center text-center">
                                     {isRound6 ? (
-                                      // Раунд 6 - показываем только обложки без текста
                                       <div className="w-24 h-24 md:w-28 md:h-28">
                                         <img
                                           src={
@@ -828,13 +778,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                                       )
                                     )}
                                     <div className="flex-1 w-full">
-                                      {isRound4 ? (
-                                        // Раунд 4 - показываем только исполнителя
-                                        <h4 className="font-semibold text-gray-800 text-base md:text-lg wrap-break-word">
-                                          {option.track.titleExecutor}
-                                        </h4>
-                                      ) : isRound5 ? (
-                                        // Раунд 5 - показываем только исполнителя крупно
+                                      {isRound4 || isRound5 ? (
                                         <h4 className="font-semibold text-gray-800 text-base md:text-lg wrap-break-word">
                                           {option.track.titleExecutor}
                                         </h4>
@@ -907,9 +851,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             )}
           </div>
         </div>
-        <button onClick={onBack} className="mt-4 text-blue-500 cursor-pointer">
-          Выйти из игры
-        </button>
       </div>
     </div>
   );

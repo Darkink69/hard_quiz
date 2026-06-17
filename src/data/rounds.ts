@@ -33,7 +33,7 @@ export const rounds: Round[] = [
     id: 2,
     name: "Второй раунд",
     timeLimit: 10,
-    points: 70,
+    points: 40,
     description: "Угадайте песню только по обложке за 10 секунд!",
     type: "coverOnly",
     showCover: true,
