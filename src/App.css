@@ -203,3 +203,18 @@
 .animate-fadeInScale {
   animation: fadeInScale 0.3s ease-out;
 }
+
+@font-face {
+  font-family: 'web_ibm_mda';
+  src: url('/web_ibm_mda.ttf') format('opentype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+.ibm {
+  font-family: 'web_ibm_mda', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}

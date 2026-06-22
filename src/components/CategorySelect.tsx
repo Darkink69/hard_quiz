@@ -71,7 +71,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
   // const currentLevelConfig = getLevelConfig(playerProgress.level);
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-900 to-purple-900">
+    <div className="min-h-screen bg-[url('/bg.jpg')] bg-no-repeat bg-cover bg-fixed">
       {/* Хедер */}
       <Header
         globalScore={globalScore}
@@ -104,7 +104,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
         <div className="text-center mb-12">
           <img className="w-80 mx-auto" src="/logo.png" alt="" />
 
-          <p className="text-xl text-purple-200">
+          <p className="text-xl text-purple-200 ibm">
             Выберите категорию игры, да посложнее!
           </p>
           {/* <p className="text-sm text-purple-300/70 mt-2">
@@ -121,21 +121,23 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
               <button
                 key={category.id}
                 onClick={() => onSelectCategory(category)}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ibm"
               >
                 <div
-                  className={`absolute inset-0 bg-linear-to-r ${category.color} opacity-90`}
+                  className={`absolute inset-0 bg-black border-4 border-${category.color} opacity-90`}
                 />
                 <div className="relative p-4 text-white">
                   <div className="flex items-start justify-between mb-3">
                     <div className="text-5xl">{category.icon}</div>
                     <div
-                      className={`relative ${getDifficultyColor(category.difficulty)} px-3 py-1 rounded-full text-xs shadow-lg`}
+                      className={`relative ${getDifficultyColor(category.difficulty)} px-3 py-1 text-sm`}
                     >
                       {getDifficultyText(category.difficulty)}
                     </div>
                   </div>
-                  <h2 className="text-xl font-bold mb-2 text-left">
+                  <h2
+                    className={`text-xl mb-2 text-${category.color} text-left`}
+                  >
                     {category.name}
                   </h2>
                   <p className="text-white/90 text-sm mb-3 text-left">
@@ -152,8 +154,8 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
           })}
         </div>
 
-        <div className="text-center mt-12 text-purple-200 text-sm">
-          <p>🎯 Посмотрим, какой вы меломан...</p>
+        <div className="text-center mt-12 text-purple-200 text-sm ibm">
+          <p>Посмотрим, какой вы меломан...|</p>
         </div>
       </div>
     </div>

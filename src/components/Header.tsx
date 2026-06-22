@@ -43,7 +43,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <>
       {/* Хедер */}
-      <header className="bg-linear-to-r from-gray-900 to-purple-900 border-b border-purple-800/50 sticky top-0 z-40">
+      <header className="bg-linear-to-r from-gray-900 to-gray-950 sticky top-0 z-40 ibm opacity-90">
         <div className="container mx-auto max-w-6xl px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Логотип */}
@@ -51,37 +51,81 @@ const Header: React.FC<HeaderProps> = ({
               <img src="/logo.png" alt="Logo" className="h-5" />
             </div>
 
-            {/* Плашки с результатами */}
             <div className="flex items-center gap-2 md:gap-4">
               {/* Общий результат */}
-              <div className="bg-yellow-500/20 backdrop-blur-sm rounded-full px-3 py-1.5 md:px-4 md:py-2 border border-yellow-400/30 shadow-lg">
-                <span className="text-yellow-300 font-bold text-sm md:text-base">
-                  {isMobile ? "🏆" : "🏆 Общий результат:"}
+              <div className="px-3 py-1.5 md:px-4 md:py-2">
+                <span className="text-yellow-300 text-sm md:text-base">
+                  {isMobile ? (
+                    <img
+                      src="/icon_1.jpg"
+                      alt="Общий результат"
+                      className="w-5 h-5 inline"
+                    />
+                  ) : (
+                    <span className="flex items-center gap-1">
+                      <img
+                        src="/icon_1.jpg"
+                        alt="Общий результат"
+                        className="w-5 h-5 inline"
+                      />
+                      ОБЩИЙ РЕЗУЛЬТАТ:
+                    </span>
+                  )}
                 </span>
-                <span className="text-yellow-100 font-bold ml-1 text-sm md:text-base">
+                <span className="text-yellow-100 ml-1 text-sm md:text-base">
                   {globalScore}
                 </span>
               </div>
 
               {/* Рекорд */}
-              <div className="bg-purple-500/20 backdrop-blur-sm rounded-full px-3 py-1.5 md:px-4 md:py-2 border border-purple-400/30 shadow-lg">
-                <span className="text-purple-300 font-bold text-sm md:text-base">
-                  {isMobile ? "📈" : "📈 Рекорд:"}
+              <div className="px-3 py-1.5 md:px-4 md:py-2">
+                <span className="text-purple-300 text-sm md:text-base">
+                  {isMobile ? (
+                    <img
+                      src="/icon_2.jpg"
+                      alt="Рекорд"
+                      className="w-10 inline"
+                    />
+                  ) : (
+                    <span className="flex items-center gap-1">
+                      <img
+                        src="/icon_2.jpg"
+                        alt="Рекорд"
+                        className="w-10 inline"
+                      />
+                      РЕКОРД:
+                    </span>
+                  )}
                 </span>
-                <span className="text-purple-100 font-bold ml-1 text-sm md:text-base">
+                <span className="text-purple-100 ml-1 text-sm md:text-base">
                   {highScore}
                 </span>
               </div>
 
               {/* Уровень */}
-              <div className="bg-green-500/20 backdrop-blur-sm rounded-full px-3 py-1.5 md:px-4 md:py-2 border border-green-400/30 shadow-lg">
-                <span className="text-green-300 font-bold text-sm md:text-base">
-                  {isMobile ? "⭐" : "⭐ Уровень:"}
+              <div className="px-3 py-1.5 md:px-4 md:py-2">
+                <span className="text-green-300 text-sm md:text-base">
+                  {isMobile ? (
+                    <img
+                      src="/icon_3.jpg"
+                      alt="Уровень"
+                      className="w-5 h-5 inline"
+                    />
+                  ) : (
+                    <span className="flex items-center gap-1">
+                      <img
+                        src="/icon_3.jpg"
+                        alt="Уровень"
+                        className="w-5 h-5 inline"
+                      />
+                      УРОВЕНЬ:
+                    </span>
+                  )}
                 </span>
-                <span className="text-green-100 font-bold ml-1 text-sm md:text-base">
+                <span className="text-green-100 ml-1 text-sm md:text-base">
                   {playerProgress.level}
                   {!isMobile && currentLevelConfig && (
-                    <span className="text-green-300/70 text-xs ml-1">
+                    <span className="text-green-300/70 text-sm ml-1">
                       ({currentLevelConfig.title})
                     </span>
                   )}
@@ -112,7 +156,7 @@ const Header: React.FC<HeaderProps> = ({
       {/* Полноэкранное меню */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-linear-to-br from-gray-900 to-purple-900 flex flex-col"
+          className="fixed inset-0 z-50 bg-linear-to-br from-gray-900 to-purple-900 flex flex-col ibm"
           onClick={closeMenu}
         >
           <div
@@ -154,7 +198,7 @@ const Header: React.FC<HeaderProps> = ({
                   closeMenu();
                   // TODO: Открыть страницу "Подробнее"
                 }}
-                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors font-bold py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
+                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
               >
                 Подробнее
               </button>
@@ -163,7 +207,7 @@ const Header: React.FC<HeaderProps> = ({
                   closeMenu();
                   // TODO: Открыть страницу "Правила"
                 }}
-                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors font-bold py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
+                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
               >
                 Правила
               </button>
@@ -172,7 +216,7 @@ const Header: React.FC<HeaderProps> = ({
                   closeMenu();
                   // TODO: Открыть страницу "Настройки"
                 }}
-                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors font-bold py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
+                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
               >
                 Настройки
               </button>
@@ -185,7 +229,7 @@ const Header: React.FC<HeaderProps> = ({
                   closeMenu();
                   // TODO: Открыть страницу доната
                 }}
-                className="text-xl md:text-2xl text-yellow-400 hover:text-yellow-300 transition-colors font-bold py-3 px-8 border-2 border-yellow-400/50 rounded-xl hover:bg-yellow-400/10 w-full max-w-sm text-center cursor-not-allowed"
+                className="text-xl md:text-2xl text-yellow-400 hover:text-yellow-300 transition-colors py-3 px-8 border-2 border-yellow-400/50 rounded-xl hover:bg-yellow-400/10 w-full max-w-sm text-center cursor-not-allowed"
               >
                 Сделать донат
               </button>

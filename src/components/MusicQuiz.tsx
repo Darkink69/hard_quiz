@@ -544,7 +544,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-gray-900 to-purple-900 py-8 px-4 relative">
+    <div className="min-h-screen bg-[url('/bg.jpg')] bg-no-repeat bg-cover bg-fixed relative py-8 px-4">
       {/* Анимация очков */}
       {showScoreAnimation && roundScore !== null && (
         <div
@@ -556,9 +556,11 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
       <div className="container mx-auto max-w-4xl">
         {/* Верхняя панель с названием категории и раундом */}
-        <div className="flex justify-between items-center mb-4">
-          <div className="text-white text-xl font-bold">{category.name}</div>
-          <div className="bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 text-white font-bold">
+        <div className="flex justify-between items-center mb-8">
+          <div className="text-white text-xl shadow-md ibm">
+            {category.name}
+          </div>
+          <div className=" text-pink-400 text-xl font-bold ibm">
             Раунд {currentRound + 1}/{rounds.length}
           </div>
         </div>
@@ -566,10 +568,10 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         <div className="bg-white rounded-xl shadow-lg overflow-hidden">
           {/* Верхняя секция с информацией о раунде */}
           <div
-            className={`bg-linear-to-r ${category.color} p-4 md:p-6 text-white`}
+            className={`bg-linear-to-r ${category.color} p-4 md:p-6 text-black ibm`}
           >
             <div className="text-center">
-              <p className="text-lg md:text-xl font-semibold">
+              <p className="text-lg md:text-xl">
                 {currentRoundConfig.description}
               </p>
             </div>
@@ -656,7 +658,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                     </div>
                     <button
                       onClick={startListening}
-                      className="px-8 py-4 bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-full font-bold text-xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
+                      className="px-8 py-4 bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-full ibm text-xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
                     >
                       Играть
                     </button>
@@ -851,6 +853,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             )}
           </div>
         </div>
+        <button onClick={onBack} className="mt-4 text-sm ibm text-purple-200">
+          Выход из игры
+        </button>
       </div>
     </div>
   );
