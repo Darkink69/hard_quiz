@@ -504,7 +504,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         <div className="bg-white rounded-xl shadow-lg p-8 max-w-md w-full mx-4">
           <div className="flex flex-col items-center justify-center space-y-4">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
-            <p className="text-gray-600">Загрузка квиза "{category.name}"...</p>
+            <p className="text-gray-600 ibm">
+              Загрузка квиза "{category.name}"...
+            </p>
           </div>
         </div>
       </div>
@@ -560,7 +562,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           <div className="text-white text-xl shadow-md ibm">
             {category.name}
           </div>
-          <div className=" text-pink-400 text-xl font-bold ibm">
+          <div className=" text-pink-400 text-xl ibm">
             Раунд {currentRound + 1}/{rounds.length}
           </div>
         </div>
@@ -571,9 +573,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             className={`bg-linear-to-r ${category.color} p-4 md:p-6 text-black ibm`}
           >
             <div className="text-center">
-              <p className="text-lg md:text-xl">
-                {currentRoundConfig.description}
-              </p>
+              <div className="text-lg md:text-xl">
+                {!quizCompleted && <div>{currentRoundConfig.description}</div>}
+              </div>
             </div>
           </div>
 
@@ -601,10 +603,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             {showCoverForRound && currentTrack && (
               <div className="text-center py-8">
                 <img
-                  src={
-                    currentTrack.coverHTTP ||
-                    "https://via.placeholder.com/300x300?text=No+Cover"
-                  }
+                  src={currentTrack.coverHTTP || "/icon_2.jpg"}
                   alt="Обложка альбома"
                   className="w-64 h-64 mx-auto rounded-full shadow-2xl object-cover"
                 />
@@ -651,14 +650,14 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                 {showListenButton ? (
                   <div className="text-center">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-lg text-gray-600">
+                      <p className="text-2xl text-gray-600 ibm">
                         Очков за победу:{" "}
                         {currentRoundConfig.points * difficulty}
                       </p>
                     </div>
                     <button
                       onClick={startListening}
-                      className="px-8 py-4 bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-full ibm text-xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
+                      className="px-8 py-4 bg-pink-500 text-white rounded-xl ibm text-xl hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-sm"
                     >
                       Играть
                     </button>
@@ -666,19 +665,19 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                 ) : isTrackLoading && !hasStarted ? (
                   <div className="text-center">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-lg text-gray-600 mt-2">
+                      <p className="text-2xl text-gray-600 ibm">
                         Очков за победу:{" "}
                         {currentRoundConfig.points * difficulty}
                       </p>
                     </div>
                     <div className="inline-flex flex-col items-center gap-3">
                       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
-                      <div className="text-gray-600">
+                      <div className="text-gray-600 ibm">
                         Загрузка задания... {Math.round(trackLoadProgress)}%
                       </div>
                       <div className="w-64 h-2 bg-gray-200 rounded-full overflow-hidden">
                         <div
-                          className="h-full bg-purple-500 transition-all duration-300"
+                          className="h-full bg-purple-500 transition-all duration-300 ibm"
                           style={{ width: `${trackLoadProgress}%` }}
                         />
                       </div>
@@ -692,10 +691,10 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                         className={`text-center mb-6 ${countdown < 6 ? "animate-ping" : "animate-none"}`}
                       >
                         <div className="inline-flex items-center gap-2 bg-purple-100 rounded-full px-4 py-2">
-                          <span className="text-2xl font-bold text-purple-600">
+                          <span className="text-2xl text-purple-600 ibm">
                             {countdown}
                           </span>
-                          <span className="text-purple-600">
+                          <span className="text-purple-600 ibm">
                             секунд осталось
                           </span>
                         </div>
@@ -751,13 +750,13 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                                         <img
                                           src={
                                             option.track.coverHTTP ||
-                                            "https://via.placeholder.com/112x112?text=🎵"
+                                            "/icon_2.jpg"
                                           }
                                           alt="Обложка"
                                           className="w-full h-full rounded-lg object-cover shadow-md"
                                           onError={(e) => {
                                             (e.target as HTMLImageElement).src =
-                                              "https://via.placeholder.com/112x112?text=🎵";
+                                              "/icon_2.jpg";
                                           }}
                                         />
                                       </div>
@@ -772,8 +771,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                                             onError={(e) => {
                                               (
                                                 e.target as HTMLImageElement
-                                              ).src =
-                                                "https://via.placeholder.com/96x96?text=🎵";
+                                              ).src = "/icon_2.jpg";
                                             }}
                                           />
                                         </div>
@@ -825,37 +823,48 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
             {/* Результаты игры */}
             {quizCompleted && (
-              <div className="text-center py-8">
-                <h3 className="text-3xl font-bold text-gray-800 mb-4">
-                  🎉 Игра завершена! 🎉
-                </h3>
-                <div className="bg-linear-to-r from-purple-500 to-pink-500 rounded-xl p-6 mb-6">
+              <div className="text-center py-8 ibm">
+                <h3 className="text-4xl text-gray-800 mb-4">Игра завершена!</h3>
+                <div className="bg-pink-500 rounded-xl p-6 mb-6">
                   <p className="text-white text-lg mb-2">
                     Ваш результат в этой игре:
                   </p>
-                  <p className="text-white text-5xl font-bold">{totalScore}</p>
+                  <p className="text-amber-200 text-5xl">{totalScore}</p>
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <button
                     onClick={startNewGame}
-                    className="px-6 py-3 bg-linear-to-r from-purple-500 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
+                    className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 shadow-lg"
                   >
-                    🎮 Играть заново
+                    Играть заново
                   </button>
                   <button
                     onClick={onBack}
-                    className="px-6 py-3 bg-gray-500 text-white rounded-lg font-semibold hover:bg-gray-600 transition-all"
+                    className="px-6 py-3 bg-lime-500 text-white hover:text-black rounded-lg hover:bg-lime-200 transition-all"
                   >
-                    🏠 Выбрать другую категорию
+                    Выбрать другую категорию
                   </button>
                 </div>
               </div>
             )}
           </div>
         </div>
-        <button onClick={onBack} className="mt-4 text-sm ibm text-purple-200">
-          Выход из игры
-        </button>
+        {!quizCompleted && (
+          <button
+            onClick={onBack}
+            className="mt-4 text-sm ibm text-purple-200 cursor-pointer"
+          >
+            {"> "}Выход из игры
+          </button>
+        )}
+        {quizCompleted && (
+          <button
+            onClick={onBack}
+            className="mt-4 text-sm ibm text-purple-200 cursor-pointer"
+          >
+            {"--> "}Нравится игра? Сделайте донат!{" <--"}
+          </button>
+        )}
       </div>
     </div>
   );

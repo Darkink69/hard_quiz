@@ -10,6 +10,25 @@ import {
 // import { getLevelConfig } from "../data/levels";
 import type { PlayerProgress } from "../utils/levelUtils";
 
+const colorMap: Record<string, string> = {
+  "red-500": "border-red-500",
+  "purple-500": "border-purple-500",
+  "green-500": "border-green-500",
+  "yellow-500": "border-yellow-500",
+  "blue-500": "border-blue-500",
+  "pink-500": "border-pink-500",
+  "orange-500": "border-orange-500",
+  "indigo-500": "border-indigo-500",
+  "teal-500": "border-teal-500",
+  "cyan-500": "border-cyan-500",
+  "rose-500": "border-rose-500",
+  "amber-500": "border-amber-500",
+  "lime-500": "border-lime-500",
+  "emerald-500": "border-emerald-500",
+  "violet-500": "border-violet-500",
+  "fuchsia-500": "border-fuchsia-500",
+};
+
 interface CategorySelectProps {
   onSelectCategory: (category: Category) => void;
   globalScore: number;
@@ -105,18 +124,20 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
           <img className="w-80 mx-auto" src="/logo.png" alt="" />
 
           <p className="text-xl text-purple-200 ibm">
-            Выберите категорию игры, да посложнее!
+            Угадайте песню. Выберите категорию игры, да посложнее!
           </p>
           {/* <p className="text-sm text-purple-300/70 mt-2">
             Сыграно категорий: {playerProgress.playedCategories.length}
           </p> */}
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((category) => {
-            const isPlayed = playerProgress.playedCategories.includes(
-              category.id,
-            );
+            // const isPlayed = playerProgress.playedCategories.includes(
+            //   category.id,
+            // );
+            const borderClass = colorMap[category.color] || "border-gray-500";
+
             return (
               <button
                 key={category.id}
@@ -124,11 +145,18 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
                 className="group relative overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ibm"
               >
                 <div
-                  className={`absolute inset-0 bg-black border-4 border-${category.color} opacity-90`}
+                  className={`absolute inset-0 bg-black border-4 ${borderClass} opacity-90`}
                 />
                 <div className="relative p-4 text-white">
                   <div className="flex items-start justify-between mb-3">
-                    <div className="text-5xl">{category.icon}</div>
+                    <div className="text-5xl">
+                      {" "}
+                      <img
+                        src={"/img/" + category.icon}
+                        alt="Общий результат"
+                        className="w-full inline"
+                      />
+                    </div>
                     <div
                       className={`relative ${getDifficultyColor(category.difficulty)} px-3 py-1 text-sm`}
                     >
@@ -143,11 +171,58 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
                   <p className="text-white/90 text-sm mb-3 text-left">
                     {category.description}
                   </p>
-                  {isPlayed && (
-                    <div className="absolute bottom-2 right-3 text-white/50 text-xs">
-                      ✓ Пройдена
+                </div>
+              </button>
+            );
+          })}
+        </div> */}
+
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {categories.map((category) => {
+            const borderClass = colorMap[category.color] || "border-gray-500";
+
+            return (
+              <button
+                key={category.id}
+                onClick={() => onSelectCategory(category)}
+                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
+              >
+                <div
+                  className={`absolute inset-0 bg-black border-4 ${borderClass} opacity-90`}
+                />
+                <div className="relative p-4 text-white">
+                  <div className="md:flex flex-none items-start gap-4">
+                    <div className="shrink-0">
+                      <img
+                        src={"/img/" + category.icon}
+                        alt={category.name}
+                        className="w-full object-contain"
+                      />
                     </div>
-                  )}
+
+                    <div className="flex-1 min-w-0">
+                      {/* Название категории */}
+                      <h2
+                        className={`text-lg md:text-2xl text-${category.color} text-left wrap-break-word ibm`}
+                      >
+                        {category.name}
+                      </h2>
+
+                      {/* Описание */}
+                      <p className="text-white/80 text-xs md:text-sm mb-2 text-left wrap-break-word ibm">
+                        {category.description}
+                      </p>
+
+                      {/* Сложность */}
+                      <div className="flex items-center gap-2">
+                        <span
+                          className={`text-sm font-semibold ${getDifficultyColor(category.difficulty)}`}
+                        >
+                          {getDifficultyText(category.difficulty)}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </button>
             );
