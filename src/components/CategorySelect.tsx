@@ -101,18 +101,18 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
       {/* Анимация повышения уровня */}
       {showLevelUp && levelUpData && (
         <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm">
-          <div className="animate-bounce-slow text-center bg-linear-to-r from-yellow-500 to-orange-500 rounded-2xl p-8 shadow-2xl max-w-md mx-4">
-            <div className="text-6xl mb-4">🎉</div>
-            <h2 className="text-4xl font-bold text-white mb-2">
-              НОВЫЙ УРОВЕНЬ!
-            </h2>
-            <p className="text-3xl font-bold text-yellow-100 mb-2">
+          <div className="animate-bounce-slow text-center bg-orange-500 rounded-2xl p-8 shadow-2xl max-w-md mx-4">
+            <div className="mb-4">
+              <img src="/logo.png" alt="" />
+            </div>
+            <h2 className="text-4xl text-white mb-2 ibm">НОВЫЙ УРОВЕНЬ!</h2>
+            <p className="text-3xl text-yellow-100 mb-2 ibm">
               {levelUpData.title}
             </p>
-            <p className="text-2xl font-bold text-white">
+            <p className="text-2xl text-white ibm">
               Уровень {levelUpData.level}
             </p>
-            <p className="text-xl font-bold text-green-300 mt-4">
+            <p className="text-xl text-green-300 mt-4 ibm">
               +{levelUpData.bonus} бонусных очков!
             </p>
           </div>
@@ -130,52 +130,6 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
             Сыграно категорий: {playerProgress.playedCategories.length}
           </p> */}
         </div>
-
-        {/* <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((category) => {
-            // const isPlayed = playerProgress.playedCategories.includes(
-            //   category.id,
-            // );
-            const borderClass = colorMap[category.color] || "border-gray-500";
-
-            return (
-              <button
-                key={category.id}
-                onClick={() => onSelectCategory(category)}
-                className="group relative overflow-hidden rounded-2xl bg-white shadow-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl ibm"
-              >
-                <div
-                  className={`absolute inset-0 bg-black border-4 ${borderClass} opacity-90`}
-                />
-                <div className="relative p-4 text-white">
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="text-5xl">
-                      {" "}
-                      <img
-                        src={"/img/" + category.icon}
-                        alt="Общий результат"
-                        className="w-full inline"
-                      />
-                    </div>
-                    <div
-                      className={`relative ${getDifficultyColor(category.difficulty)} px-3 py-1 text-sm`}
-                    >
-                      {getDifficultyText(category.difficulty)}
-                    </div>
-                  </div>
-                  <h2
-                    className={`text-xl mb-2 text-${category.color} text-left`}
-                  >
-                    {category.name}
-                  </h2>
-                  <p className="text-white/90 text-sm mb-3 text-left">
-                    {category.description}
-                  </p>
-                </div>
-              </button>
-            );
-          })}
-        </div> */}
 
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {categories.map((category) => {
@@ -203,7 +157,7 @@ const CategorySelect: React.FC<CategorySelectProps> = ({
                     <div className="flex-1 min-w-0">
                       {/* Название категории */}
                       <h2
-                        className={`text-lg md:text-2xl text-${category.color} text-left wrap-break-word ibm`}
+                        className={`text-lg md:text-2xl text-${category.color} text-left wrap-break-word ibm leading-7 mt-1`}
                       >
                         {category.name}
                       </h2>

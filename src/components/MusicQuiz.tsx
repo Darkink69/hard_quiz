@@ -491,13 +491,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     selectRandomTrackAndOptions(tracks);
   };
 
-  // const formatTime = (seconds: number): string => {
-  //   if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
-  //   const mins = Math.floor(seconds / 60);
-  //   const secs = Math.floor(seconds % 60);
-  //   return `${mins}:${secs.toString().padStart(2, '0')}`;
-  // };
-
   if (isLoading) {
     return (
       <div className="min-h-screen bg-linear-to-br from-gray-900 to-purple-900 flex items-center justify-center">
@@ -619,7 +612,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                     {currentTrack.titleTrack}
                   </h3>
                 </div>
-                <p className="mt-4 text-gray-600">Кто исполняет эту песню?</p>
+                <p className="mt-4 text-gray-600 ibm">
+                  Кто исполняет эту песню?
+                </p>
               </div>
             )}
 
@@ -638,7 +633,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                     {currentTrack.titleExecutor}
                   </p>
                 </div>
-                <p className="mt-4 text-gray-600">
+                <p className="mt-4 text-gray-600 ibm">
                   Выберите правильную обложку!
                 </p>
               </div>
@@ -650,7 +645,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                 {showListenButton ? (
                   <div className="text-center">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-2xl text-gray-600 ibm">
+                      <p className="text-2xl text-blue-600 ibm">
                         Очков за победу:{" "}
                         {currentRoundConfig.points * difficulty}
                       </p>
@@ -665,13 +660,16 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                 ) : isTrackLoading && !hasStarted ? (
                   <div className="text-center">
                     <div className="mb-4 p-4 bg-purple-50 rounded-lg">
-                      <p className="text-2xl text-gray-600 ibm">
+                      <p className="text-2xl text-blue-600 ibm">
                         Очков за победу:{" "}
                         {currentRoundConfig.points * difficulty}
                       </p>
                     </div>
                     <div className="inline-flex flex-col items-center gap-3">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div>
+                      {/* <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div> */}
+                      <div className="w-10">
+                        <img src="/loading.gif" alt="" />
+                      </div>
                       <div className="text-gray-600 ibm">
                         Загрузка задания... {Math.round(trackLoadProgress)}%
                       </div>
@@ -862,7 +860,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             onClick={onBack}
             className="mt-4 text-sm ibm text-purple-200 cursor-pointer"
           >
-            {"--> "}Нравится игра? Сделайте донат!{" <--"}
+            Нравится игра? Сделайте донат.
           </button>
         )}
       </div>

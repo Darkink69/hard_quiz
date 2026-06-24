@@ -1,0 +1,866 @@
+[
+  {
+    "title": "Busta Rhymes & Flipmode  Squad - I Know What You Want",
+    "titleTrack": "I Know What You Want",
+    "titleExecutor": "Busta Rhymes",
+    "uidTrack": 233404,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201405/68cb48856b73380c7e7860edcdee8583.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201405/adae0992ae1b4b2de9503356eb185381.mp3",
+    "duration": 324
+  },
+  {
+    "title": "Black Eyed Peas - Just Can’t Get Enough",
+    "titleTrack": "Just Can’t Get Enough",
+    "titleExecutor": "Black Eyed Peas",
+    "uidTrack": 826893,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/df9746e75182e4b030962130d1043165.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/f299fd7df82be7b98d3b886e6680601d.mp3",
+    "duration": 219
+  },
+  {
+    "title": "MARIO WINANS ft. P. Diddy - I Don't Wanna Know",
+    "titleTrack": "I Don't Wanna Know",
+    "titleExecutor": "MARIO WINANS",
+    "uidTrack": 632358,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201812/51/5bc241848a8e065673dd962c1132e63d.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201812/51/47b813973c1eccb4330de0ba5c0e0ebd.mp3",
+    "duration": 250
+  },
+  {
+    "title": "Chamillionaire - Ridin'",
+    "titleTrack": "Ridin'",
+    "titleExecutor": "Chamillionaire",
+    "uidTrack": 826875,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/aa2dde85dd0e495ae92e9e913bbf919b.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/40c7e15f1387f60b7a52abd93ecf641e.mp3",
+    "duration": 302
+  },
+  {
+    "title": "Flipsyde - When It Was Good",
+    "titleTrack": "When It Was Good",
+    "titleExecutor": "Flipsyde",
+    "uidTrack": 208449,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201809/39/ec0005805affc780f88600f193e75635.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201809/39/0b1e502ee80bf931c8cbb7918d661b84.mp3",
+    "duration": 217
+  },
+  {
+    "title": "Jennifer Lopez - Love Don't Cost A Thing",
+    "titleTrack": "Love Don't Cost A Thing",
+    "titleExecutor": "Jennifer Lopez",
+    "uidTrack": 8868,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201406/09f4f4f6ff4f70e8d3b6f159dab4501a.png",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201406/3720c0a0c0734889e7d53eeb1f4e9dd6.mp3",
+    "duration": 219
+  },
+  {
+    "title": "2Pac feat. Dr.DRE - California Love",
+    "titleTrack": "California Love",
+    "titleExecutor": "2Pac",
+    "uidTrack": 117807,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201801/02/39c7c59113d6fd67bb27594bc7c4257b.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201801/02/8656abd47f887c7b36a1d7b0c69b3e4a.mp3",
+    "duration": 279
+  },
+  {
+    "title": "Eminem feat. Dido - Stan",
+    "titleTrack": "Stan",
+    "titleExecutor": "Eminem",
+    "uidTrack": 8264,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201407/7f2c8d0a3073c302665e4494a6318710.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201407/e640882fd221c702155eb235be44d584.mp3",
+    "duration": 400
+  },
+  {
+    "title": "Kaye Styles - Prison Break Anthem",
+    "titleTrack": "Prison Break Anthem",
+    "titleExecutor": "Kaye Styles",
+    "uidTrack": 826905,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/c6c4400260dda32fe53e2106f1c6e2b0.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/23c4af0f2ac38cc6a5a894fea51796db.mp3",
+    "duration": 203
+  },
+  {
+    "title": "Jason Derulo feat. Snoop Dogg - Wiggle",
+    "titleTrack": "Wiggle",
+    "titleExecutor": "Jason Derulo",
+    "uidTrack": 316462,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202406/25/a7d7ee06ccd0dfc3aee2b2094f215016.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201409/c3249df0e3fdfba2b1228df799c820e5.mp3",
+    "duration": 137
+  },
+  {
+    "title": "50 Cent - In Da Club",
+    "titleTrack": "In Da Club",
+    "titleExecutor": "50 Cent",
+    "uidTrack": 5395,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201405/9d920e846c201e79bc581d23a4eabe72.png",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201405/35b1bbcf5aad1eb352164c20dde919a3.mp3",
+    "duration": 192
+  },
+  {
+    "title": "Justin Timberlake - What Goes Around...Comes Around (Radio Edit)",
+    "titleTrack": "What Goes Around...Comes Around (Radio Edit)",
+    "titleExecutor": "Justin Timberlake",
+    "uidTrack": 826866,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/737b9cc1b34fe5cb51ae295973936b60.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/d73db08e1cfec48294625627b4260ba7.mp3",
+    "duration": 309
+  },
+  {
+    "title": "T.I. - Castle Walls",
+    "titleTrack": "Castle Walls",
+    "titleExecutor": "T.I.",
+    "uidTrack": 701244,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202002/06/e0d0c27e7c0d99f14e45a39fd7f2bac3.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202002/06/d1bb9cbff5f975766c2abf6ed9edbc2e.mp3",
+    "duration": 327
+  },
+  {
+    "title": "Black Eyed Peas - Let's Get It Started",
+    "titleTrack": "Let's Get It Started",
+    "titleExecutor": "Black Eyed Peas",
+    "uidTrack": 802601,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202112/49/d2a2ade8c767fa6cc6f46670b8db5de6.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202112/49/ad97d5560136bd008745c4e24a13a10d.mp3",
+    "duration": 215
+  },
+  {
+    "title": "Rihanna - Russian Roulette (Album Version)",
+    "titleTrack": "Russian Roulette (Album Version)",
+    "titleExecutor": "Rihanna",
+    "uidTrack": 826886,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201610/41/e27f43f087de25ff9a60f2708c9f2cc9.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/4ced57591630ca3d58164bad5c8d9d4b.mp3",
+    "duration": 226
+  },
+  {
+    "title": "Dj Shadow - Nobody Speak",
+    "titleTrack": "Nobody Speak",
+    "titleExecutor": "Dj Shadow",
+    "uidTrack": 826888,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/a733c4b656ba8af08abb65258a4a903d.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/64fb2d4de6a4239ace7a31e239fbabfd.mp3",
+    "duration": 193
+  },
+  {
+    "title": "Chamillionaire - Not A Criminal",
+    "titleTrack": "Not A Criminal",
+    "titleExecutor": "Chamillionaire",
+    "uidTrack": 69553,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/0aa2a1b48db4c0fb93d5e073dbb33c11.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/82571384d631fcdef768dc96b4c78fc8.mp3",
+    "duration": 262
+  },
+  {
+    "title": "Beyonce - Beautiful Liar (Main Version)",
+    "titleTrack": "Beautiful Liar (Main Version)",
+    "titleExecutor": "Beyonce",
+    "uidTrack": 826902,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/177583c472af5ceba5924bef6052ca03.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/8398ab65efb38be58ed4facbb496b81e.mp3",
+    "duration": 196
+  },
+  {
+    "title": "Will.I.Am - Heartbreaker (Album Version Edited)",
+    "titleTrack": "Heartbreaker (Album Version Edited)",
+    "titleExecutor": "Will.I.Am",
+    "uidTrack": 826852,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/af114a156b7f82710ec897708a5a29b0.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/2bfdf3a2f2c94912666b22bf49af267d.mp3",
+    "duration": 325
+  },
+  {
+    "title": "Ilkay Sencan & Dynoro - Rockstar",
+    "titleTrack": "Rockstar",
+    "titleExecutor": "Ilkay Sencan",
+    "uidTrack": 668849,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201906/26/94fba7b9cc00a2e51917a267becc57be.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201906/26/96e3a72f57007683272a16efff9d5c21.mp3",
+    "duration": 209
+  },
+  {
+    "title": "Christina Milian - When You Look At Me",
+    "titleTrack": "When You Look At Me",
+    "titleExecutor": "Christina Milian",
+    "uidTrack": 57936,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201903/11/f6e88356273d4e45e9dbdc8b0c5dc4b6.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201903/11/71be74f08f5b3d88dcb4dd9ce79f368f.mp3",
+    "duration": 220
+  },
+  {
+    "title": "Destiny's Child - Survivor",
+    "titleTrack": "Survivor",
+    "titleExecutor": "Destiny's Child",
+    "uidTrack": 278200,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201809/39/956b9677e5e170b5a6c646722c23ebb3.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201809/39/d0def415699d1fc0511f839b4a9e722d.mp3",
+    "duration": 251
+  },
+  {
+    "title": "G-Eazy & Halsey - Him & I",
+    "titleTrack": "Him & I",
+    "titleExecutor": "G-Eazy",
+    "uidTrack": 564385,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201803/12/658a51f8de7d0ee5d38e2d71dc9d5a1d.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201803/12/32fed6f4c8f5027bd27e6dafd594a20f.mp3",
+    "duration": 198
+  },
+  {
+    "title": "Beyonce - Irreplaceable",
+    "titleTrack": "Irreplaceable",
+    "titleExecutor": "Beyonce",
+    "uidTrack": 166526,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201311/6bfa365f32b49ba6f9e6a84327836a3b.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201311/a914e1bead1f5287b65563002de3351b.mp3",
+    "duration": 225
+  },
+  {
+    "title": "Jennifer Lopez - Jenny from the Block (Track Masters Remix)",
+    "titleTrack": "Jenny from the Block (Track Masters Remix)",
+    "titleExecutor": "Jennifer Lopez",
+    "uidTrack": 808733,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202202/07/09c09d8c1ed37005eaa626916d850155.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202202/07/67cfcf2ecacc94e68296190833f1b806.mp3",
+    "duration": 187
+  },
+  {
+    "title": "Wiz Khalifa - Black & Yellow",
+    "titleTrack": "Black & Yellow",
+    "titleExecutor": "Wiz Khalifa",
+    "uidTrack": 444336,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201610/42/a73ab92373ad3efb9afaa1da319ba77c.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201610/42/5aad6b777f6a45b201bd8e4db1aa9b32.mp3",
+    "duration": 273
+  },
+  {
+    "title": "Flo Rida - Whistle",
+    "titleTrack": "Whistle",
+    "titleExecutor": "Flo Rida",
+    "uidTrack": 62944,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202406/24/45b6fe262d984971c1e37236c08c022d.webp",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201406/d24763311684d3b44742380b18a40d42.mp3",
+    "duration": 222
+  },
+  {
+    "title": "Macklemore & Ryan Lewis - Thrift Shop",
+    "titleTrack": "Thrift Shop",
+    "titleExecutor": "Macklemore",
+    "uidTrack": 137918,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202406/25/447b13efd97da40612961dadd978073f.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201710/41/be96b33639d665d347d9d9d03c2ec58d.mp3",
+    "duration": 235
+  },
+  {
+    "title": "G-Eazy x Bebe Rexha - Me, Myself & I",
+    "titleTrack": "Me, Myself & I",
+    "titleExecutor": "G-Eazy",
+    "uidTrack": 442202,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201610/42/0fe7c756c641869b3c3c2aab62b71c0f.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201610/42/7c4a1eb2203e506bc6b885a554f72c00.mp3",
+    "duration": 249
+  },
+  {
+    "title": "K-Maro - Let's Go",
+    "titleTrack": "Let's Go",
+    "titleExecutor": "K-Maro",
+    "uidTrack": 819836,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202205/19/827f55c99dfe724566f1ab051ed106bb.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202205/19/c3ab3714e3686f99b73a3a12fdfd274d.mp3",
+    "duration": 197
+  },
+  {
+    "title": "Crazy Town - Butterfly",
+    "titleTrack": "Butterfly",
+    "titleExecutor": "Crazy Town",
+    "uidTrack": 614751,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202406/25/428166477e468b5b9f1e6c1d9c576846.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201809/39/66d802cb6494051964a4215ca6d3c81b.mp3",
+    "duration": 210
+  },
+  {
+    "title": "P. Diddy & Faith Evans - I'll Be Missing You",
+    "titleTrack": "I'll Be Missing You",
+    "titleExecutor": "P. Diddy",
+    "uidTrack": 614937,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201809/39/343583383c50b1743a6023b511ed9b81.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201809/39/5746c10afc6cc4bcd9177a5ab8e8829b.mp3",
+    "duration": 238
+  },
+  {
+    "title": "TLC - No Scrubs",
+    "titleTrack": "No Scrubs",
+    "titleExecutor": "TLC",
+    "uidTrack": 798739,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201809/39/ba833764d3d90cacfd2fb4172ef5ccc5.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202111/45/ba56f144b6320fbe1213c69674a671c8.mp3",
+    "duration": 212
+  },
+  {
+    "title": "Justin Timberlake - My Love",
+    "titleTrack": "My Love",
+    "titleExecutor": "Justin Timberlake",
+    "uidTrack": 808761,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201306/d53563648d463a970e1296ed6788db6a.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202202/07/607035f8814d54664fdd00919b1bf578.mp3",
+    "duration": 275
+  },
+  {
+    "title": "Don Diablo feat. Emeli Sande & Gucci Mane - Survive",
+    "titleTrack": "Survive",
+    "titleExecutor": "Don Diablo",
+    "uidTrack": 613731,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201809/38/04e8a05e528dd4fb10a9a155b3a169ed.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201809/38/c2020759786dcd456c0c12c3876ae18c.mp3",
+    "duration": 187
+  },
+  {
+    "title": "Jennifer Lopez - I'm Glad",
+    "titleTrack": "I'm Glad",
+    "titleExecutor": "Jennifer Lopez",
+    "uidTrack": 69571,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201406/4d7b6725141a95ff99a6bb055eb3bcc6.png",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201406/e3a0a458f1afa8fbf06ff9802a8f3418.mp3",
+    "duration": 217
+  },
+  {
+    "title": "Black Eyed Peas - Where Is The Love?",
+    "titleTrack": "Where Is The Love?",
+    "titleExecutor": "Black Eyed Peas",
+    "uidTrack": 826871,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202406/25/fd2bbfddf40388528f9ffb02f0d130d8.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/df1312d583274453819ec0a967ee3ce4.mp3",
+    "duration": 268
+  },
+  {
+    "title": "Beyonce - Deja Vu (Album Version)",
+    "titleTrack": "Deja Vu (Album Version)",
+    "titleExecutor": "Beyonce",
+    "uidTrack": 826903,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/f52c52e6350728f6ef4b5e2cfaed5f0d.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/bee7c86c21404d839ba7feb36fb5b55d.mp3",
+    "duration": 238
+  },
+  {
+    "title": "Madonna feat. Justin Timberlake & Timbaland - 4 Minutes",
+    "titleTrack": "4 Minutes",
+    "titleExecutor": "Madonna",
+    "uidTrack": 548210,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201404/3e2b13ea09db406cefaf242149b983b0.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201801/05/151792d36fd7353f0172458b9250040f.mp3",
+    "duration": 242
+  },
+  {
+    "title": "One-T & Cool-T - The Magic Key",
+    "titleTrack": "The Magic Key",
+    "titleExecutor": "One-T & Cool-T",
+    "uidTrack": 826884,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/6c5d4792190964e7e41befa1f51959f0.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/dd961643803aa826d497be90996d65bb.mp3",
+    "duration": 228
+  },
+  {
+    "title": "Gym Class Heroes ft. Adam Levine - Stereo Hearts",
+    "titleTrack": "Stereo Hearts",
+    "titleExecutor": "Gym Class Heroes",
+    "uidTrack": 580602,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201807/28/d4d406fa4d7e8617e361e9791e108847.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201805/20/bfc8f06cbd5d5c3cc1d281fc077187f2.mp3",
+    "duration": 209
+  },
+  {
+    "title": "Jessie J - Price Tag",
+    "titleTrack": "Price Tag",
+    "titleExecutor": "Jessie J",
+    "uidTrack": 134708,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201805/21/caf24ef60a0e0e0bf4d55b81882c9601.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201805/21/77cd4f5b6b4ce4a1bac093c1cc84ecc4.mp3",
+    "duration": 218
+  },
+  {
+    "title": "Justin Timberlake - Cry Me A River",
+    "titleTrack": "Cry Me A River",
+    "titleExecutor": "Justin Timberlake",
+    "uidTrack": 151414,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201807/28/5a055817ca06719bb8ba10c36a287486.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201306/01de126220f2d64bb21f4ff8efa3e978.mp3",
+    "duration": 286
+  },
+  {
+    "title": "K-Maro - Femme Like U",
+    "titleTrack": "Femme Like U",
+    "titleExecutor": "K-Maro",
+    "uidTrack": 387659,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201807/28/5fc852704344a54af2e7909c2f8c135a.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201608/08d78d049b2cc44ee638349825923372.mp3",
+    "duration": 238
+  },
+  {
+    "title": "Gorillaz - Clint Eastwood",
+    "titleTrack": "Clint Eastwood",
+    "titleExecutor": "Gorillaz",
+    "uidTrack": 550299,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202406/24/221d8e4452bc19c9252b41d103d44806.webp",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201802/06/2708a10b320cf2a64d5a2dbf2beef301.mp3",
+    "duration": 389
+  },
+  {
+    "title": "DMX - Party Up",
+    "titleTrack": "Party Up",
+    "titleExecutor": "DMX",
+    "uidTrack": 826889,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/1cb57534653191718808f63de66f9928.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/902823881d0ceeecc92e47aadd384601.mp3",
+    "duration": 268
+  },
+  {
+    "title": "Blue - Curtain Falls",
+    "titleTrack": "Curtain Falls",
+    "titleExecutor": "Blue",
+    "uidTrack": 64578,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201303/560065efb2453c7079acc837c57e08ff.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201303/87ba3b526bd34f51ff57a3237e391b3d.mp3",
+    "duration": 239
+  },
+  {
+    "title": "Rihanna feat. Jay-Z - Umbrella",
+    "titleTrack": "Umbrella",
+    "titleExecutor": "Rihanna",
+    "uidTrack": 439501,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201807/28/2caee7d8b5704879486eea181e271749.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201610/41/19a404634961576e66fd8709b278cf63.mp3",
+    "duration": 267
+  },
+  {
+    "title": "Christina Aguilera - Genie In A Bottle",
+    "titleTrack": "Genie In A Bottle",
+    "titleExecutor": "Christina Aguilera",
+    "uidTrack": 139625,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201407/3792f00a881a10ef366eade1242905e0.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201303/8442cb93e330e18b8c58120372c8e541.mp3",
+    "duration": 216
+  },
+  {
+    "title": "Eminem - You Don't Know",
+    "titleTrack": "You Don't Know",
+    "titleExecutor": "Eminem",
+    "uidTrack": 826894,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/b6197ae67b5b4461f1317f42ebcef687.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/09e232b259cb2014453bb5c032ceb293.mp3",
+    "duration": 257
+  },
+  {
+    "title": "Dante Thomas feat. PRAS - Miss California (Radio Version - with Rap)",
+    "titleTrack": "Miss California (Radio Version - with Rap)",
+    "titleExecutor": "Dante Thomas",
+    "uidTrack": 826883,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/2455dbd33f99d6de82196aeec31c2e77.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/2283884a014216ad94b51189e089412a.mp3",
+    "duration": 244
+  },
+  {
+    "title": "Kwabs - Walk",
+    "titleTrack": "Walk",
+    "titleExecutor": "Kwabs",
+    "uidTrack": 328015,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201703/09/f156c77367fe7640a5a9d9e877f856c9.png",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201411/7cd4e84d7e52193fe2b083f01f0018ec.mp3",
+    "duration": 196
+  },
+  {
+    "title": "Kelly Rowland - Work (Freemasons Radio Edit)",
+    "titleTrack": "Work (Freemasons Radio Edit)",
+    "titleExecutor": "Kelly Rowland",
+    "uidTrack": 826867,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/7cd6bd26e914ef30ca9a3b76c49c4c76.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/a0689f871c4e9799f36ed010092d6bf1.mp3",
+    "duration": 188
+  },
+  {
+    "title": "Fort Minor - Where'd You Go",
+    "titleTrack": "Where'd You Go",
+    "titleExecutor": "Fort Minor",
+    "uidTrack": 798541,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202111/45/ec3e3d3338f447ccfbda372158d94fe6.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202111/45/05383d77546c0155ab9ce8fdf1816c76.mp3",
+    "duration": 226
+  },
+  {
+    "title": "The Script feat. Will.I.Am - Hall Of Fame",
+    "titleTrack": "Hall Of Fame",
+    "titleExecutor": "The Script",
+    "uidTrack": 63616,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201407/3865a88d9c986f588e119bb739351900.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201302/cf4a5f00bcedc60817d69e9b2bce421e.mp3",
+    "duration": 197
+  },
+  {
+    "title": "DaBaby feat. Roddy Ricch - ROCKSTAR",
+    "titleTrack": "ROCKSTAR",
+    "titleExecutor": "DaBaby",
+    "uidTrack": 728959,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202005/19/aa17654d50e9a2fc837d41244c391555.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202005/19/5563868d3de7d238827045049977be9b.mp3",
+    "duration": 179
+  },
+  {
+    "title": "Tyga x YG x Santana - MAMACITA",
+    "titleTrack": "MAMACITA",
+    "titleExecutor": "Tyga",
+    "uidTrack": 685523,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201910/44/be626c558e85b54a1d6841c9e0ab325b.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201910/44/0fa3c55eb7a21521a231ff49d848a240.mp3",
+    "duration": 199
+  },
+  {
+    "title": "50 Cent feat. Justin Timberlake & Timbaland - Ayo Technology",
+    "titleTrack": "Ayo Technology",
+    "titleExecutor": "50 Cent",
+    "uidTrack": 55594,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201405/ee7158570d81196a2e00052af788584a.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201405/8799613152cf26769bfd41a1d0a7e4ac.mp3",
+    "duration": 243
+  },
+  {
+    "title": "Lil Tecca - Ransom",
+    "titleTrack": "Ransom",
+    "titleExecutor": "Lil Tecca",
+    "uidTrack": 826872,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/948dab8fa3970dd956f1fbe8d3392f17.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/1871739d37e7f52d12eb95b34f8010d1.mp3",
+    "duration": 127
+  },
+  {
+    "title": "Eminem - Sing For The Moment",
+    "titleTrack": "Sing For The Moment",
+    "titleExecutor": "Eminem",
+    "uidTrack": 67597,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201407/450ef12cb68a3bce44166873edfe20e9.png",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201407/5513a6fdfb111186c4c2ffdcf26264ee.mp3",
+    "duration": 336
+  },
+  {
+    "title": "Jay-Z - Numb / Encore",
+    "titleTrack": "Numb / Encore",
+    "titleExecutor": "Jay-Z",
+    "uidTrack": 826855,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/9f0725b74f075db23f38533d92db2a77.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/d400b8c9af9b14b3f19d351f4c4870c4.mp3",
+    "duration": 204
+  },
+  {
+    "title": "Eminem & Rihanna - The Monster",
+    "titleTrack": "The Monster",
+    "titleExecutor": "Eminem",
+    "uidTrack": 299607,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202406/25/e0664defbf8279327bacd582f4841c18.png",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201406/b36304b61039c81014ad304283797db6.mp3",
+    "duration": 249
+  },
+  {
+    "title": "Nelly feat. Kelly Rowland - Dilemma",
+    "titleTrack": "Dilemma",
+    "titleExecutor": "Nelly",
+    "uidTrack": 802597,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202112/49/a93c5e4e48b740856dc6577af549f868.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202112/49/20400972c6238b32e5974e3ef69b21b0.mp3",
+    "duration": 285
+  },
+  {
+    "title": "Sweetbox & Tears For Fears - Shout (Let It All Out)",
+    "titleTrack": "Shout (Let It All Out)",
+    "titleExecutor": "Sweetbox",
+    "uidTrack": 617067,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201810/40/b0cedaf69e76196724f7ccf437a81e08.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201810/40/a0cdaef65775abe5376acd9f61ede3ab.mp3",
+    "duration": 181
+  },
+  {
+    "title": "Wiz Khalifa feat. Charlie Puth - See You Again",
+    "titleTrack": "See You Again",
+    "titleExecutor": "Wiz Khalifa",
+    "uidTrack": 802956,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202112/50/c8e15db2d80b9b2fa9a70aeabd3b926a.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202112/50/7eb51ee78e5a3f376cf05e5418df62ea.mp3",
+    "duration": 225
+  },
+  {
+    "title": "BLACK ATTACK - Heartless",
+    "titleTrack": "Heartless",
+    "titleExecutor": "BLACK ATTACK",
+    "uidTrack": 53694,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201809/39/6e0670bbc1ec19850c3233fe2455732b.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201809/39/0c1e94759cf8b6c12dc3f6d2b3aabd2f.mp3",
+    "duration": 234
+  },
+  {
+    "title": "David Usher - Black Black Heart",
+    "titleTrack": "Black Black Heart",
+    "titleExecutor": "David Usher",
+    "uidTrack": 632036,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201812/51/3f2ade8720a8020a46105678562ce55e.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201812/51/dbdd7e679034cb617cfeab8213bfa1b4.mp3",
+    "duration": 225
+  },
+  {
+    "title": "Melanie C - Never Be The Same Again",
+    "titleTrack": "Never Be The Same Again",
+    "titleExecutor": "Melanie C",
+    "uidTrack": 67225,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201407/0fd9f9e3424c4decf8e0d743648807ad.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201708/33/12eccdb0d11020461a96bed88d2113d3.mp3",
+    "duration": 235
+  },
+  {
+    "title": "Timbaland - Give It To Me (Radio Edit)",
+    "titleTrack": "Give It To Me (Radio Edit)",
+    "titleExecutor": "Timbaland",
+    "uidTrack": 826901,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/29630dd5311ad61e145a93f680b4a19b.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/c845e91149b7f5e2997dacb5ad04df22.mp3",
+    "duration": 207
+  },
+  {
+    "title": "Ice Cube - It Was A Good Day (Album Version)",
+    "titleTrack": "It Was A Good Day (Album Version)",
+    "titleExecutor": "Ice Cube",
+    "uidTrack": 826904,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/292868740d795fb25494c82383d925e0.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/809d6af6e995bd2d2ec2dbe4e199d474.mp3",
+    "duration": 259
+  },
+  {
+    "title": "Nelly Furtado - Say It Right (Main)",
+    "titleTrack": "Say It Right (Main)",
+    "titleExecutor": "Nelly Furtado",
+    "uidTrack": 808808,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202202/07/95d1c08ee2f9508a6e5e35ded0617137.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202202/07/89211eea8709be085a80c2ea5a15592e.mp3",
+    "duration": 218
+  },
+  {
+    "title": "Mark Ronson - Ooh Wee",
+    "titleTrack": "Ooh Wee",
+    "titleExecutor": "Mark Ronson",
+    "uidTrack": 798877,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202111/45/be21dc12916e75941325e6245ddc4d8c.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202203/12/7fb741df5dbd619562bfc07c084616aa.mp3",
+    "duration": 207
+  },
+  {
+    "title": "Coolio feat. L.V. - Gangsta's Paradise",
+    "titleTrack": "Gangsta's Paradise",
+    "titleExecutor": "Coolio",
+    "uidTrack": 826880,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201809/39/501fbb4d67010f78db0fb8d90690a924.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/7d15a4a171588fad6cdb3cacde043834.mp3",
+    "duration": 239
+  },
+  {
+    "title": "Beyonce feat. Jay-Z - Crazy in Love",
+    "titleTrack": "Crazy in Love",
+    "titleExecutor": "Beyonce",
+    "uidTrack": 196734,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201807/28/6804f0b69d563292d80ca1a511d383f2.png",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201807/28/c99c2cc5d6756881faeed6916872c43a.mp3",
+    "duration": 233
+  },
+  {
+    "title": "Timbaland feat. Keri Hilson & D.O.E. - The Way I Are",
+    "titleTrack": "The Way I Are",
+    "titleExecutor": "Timbaland",
+    "uidTrack": 6417,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201407/6839bfdbc222cc0ca5ad63673b518c8f.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201407/54193d8e95165819c1c1c1f448a3ac30.mp3",
+    "duration": 179
+  },
+  {
+    "title": "Eminem feat. Rihanna - Love The Way You Lie",
+    "titleTrack": "Love The Way You Lie",
+    "titleExecutor": "Eminem",
+    "uidTrack": 47443,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202406/25/8d3e52851d19540a9874d84e736eb3f5.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201407/fe103c2b1bbfb73e54e7fdb004d78a5a.mp3",
+    "duration": 260
+  },
+  {
+    "title": "Gwen Stefani - Hollaback Girl",
+    "titleTrack": "Hollaback Girl",
+    "titleExecutor": "Gwen Stefani",
+    "uidTrack": 787348,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202107/29/0a38e976694cb12a599da4f9dfbd431a.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202107/29/58bb327e0936e919282c9a664ff277a8.mp3",
+    "duration": 196
+  },
+  {
+    "title": "Justin Timberlake - Sexyback",
+    "titleTrack": "Sexyback",
+    "titleExecutor": "Justin Timberlake",
+    "uidTrack": 614922,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201809/39/b278edf0071fc94fcd17e18fb2d59d59.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201809/39/2d4f8ae230ace7b110cdae7c32a0ddcd.mp3",
+    "duration": 204
+  },
+  {
+    "title": "The Roots - You Got Me",
+    "titleTrack": "You Got Me",
+    "titleExecutor": "The Roots",
+    "uidTrack": 235900,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/d7f19394b77aff5444f2f389603003cc.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/7ab531a25a9ad04a0435efd52c7cb6d5.mp3",
+    "duration": 256
+  },
+  {
+    "title": "WYCLEF JEAN feat. Lupe Fiasco - Fast Car (Fugee Remix featuring Lupe Fiasco)",
+    "titleTrack": "Fast Car (Fugee Remix featuring Lupe Fiasco)",
+    "titleExecutor": "WYCLEF JEAN",
+    "uidTrack": 826856,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/97da62c5dede178fc4fc17378cea2f5f.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/1cca6a1613eec8bd73340110cf1e09e8.mp3",
+    "duration": 195
+  },
+  {
+    "title": "XXXTENTACION - SAD!",
+    "titleTrack": "SAD!",
+    "titleExecutor": "XXXTENTACION",
+    "uidTrack": 578712,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201804/17/57ab08533b8f0b837a9c883d82af80c3.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201804/17/98ea98cb0391ed685e886f8ed29de640.mp3",
+    "duration": 163
+  },
+  {
+    "title": "Travis Scott - HIGHEST IN THE ROOM",
+    "titleTrack": "HIGHEST IN THE ROOM",
+    "titleExecutor": "Travis Scott",
+    "uidTrack": 684478,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201910/41/f788875c89d112596dce830bcdb8a21f.jpeg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201910/41/9ba8a002d08cf8f2bdd8a397f1f45703.mp3",
+    "duration": 175
+  },
+  {
+    "title": "Will Smith - Gettin' Jiggy Wit It",
+    "titleTrack": "Gettin' Jiggy Wit It",
+    "titleExecutor": "Will Smith",
+    "uidTrack": 608812,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201808/33/44abf8ebffd92874ae2e9aa71973e897.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201808/33/460b050c458dc1c4667a9f36065fbbf8.mp3",
+    "duration": 226
+  },
+  {
+    "title": "Black Eyed Peas - Don't Lie (Album Version)",
+    "titleTrack": "Don't Lie (Album Version)",
+    "titleExecutor": "Black Eyed Peas",
+    "uidTrack": 826892,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/6bb8a2588145bbd720823bdbafa8f690.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/4faf0925d95a73fe9a249da30cbe325c.mp3",
+    "duration": 218
+  },
+  {
+    "title": "Jennifer Lopez - I'm Into You (Album Version)",
+    "titleTrack": "I'm Into You (Album Version)",
+    "titleExecutor": "Jennifer Lopez",
+    "uidTrack": 826859,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/56f009f3ae122b8046c5b7ee569a230f.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/6ad8ec9e7ca926dabf1619312098d138.mp3",
+    "duration": 197
+  },
+  {
+    "title": "Sugarhill Gang - Rapper's Delight",
+    "titleTrack": "Rapper's Delight",
+    "titleExecutor": "Sugarhill Gang",
+    "uidTrack": 588666,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201805/21/8b15e837ddc955dc6407a9f2eb2556dc.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201805/21/ca9e198df28a3b10883a83cdc658267f.mp3",
+    "duration": 233
+  },
+  {
+    "title": "Madcon feat. Ameerah - Freaky Like Me",
+    "titleTrack": "Freaky Like Me",
+    "titleExecutor": "Madcon",
+    "uidTrack": 67314,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202406/25/dc77d2bd79973f873cd7d6ded096989c.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201404/51ff01f5331ad36fa16899dee0809b12.mp3",
+    "duration": 186
+  },
+  {
+    "title": "Kanye West - Stronger",
+    "titleTrack": "Stronger",
+    "titleExecutor": "Kanye West",
+    "uidTrack": 54385,
+    "coverHTTP": "https://cdn0.101.ru/vardata/modules/musicdb/files/201406/caa594b72a1285631b5bdf537d6b9a73.jpg",
+    "audiofile": "https://cdn1.101.ru/vardata/modules/musicdb/files/201406/f67e99e9210bb05b6cdadb736ab92cae.mp3",
+    "duration": 310
+  },
+  {
+    "title": "Outkast - Ms. Jackson",
+    "titleTrack": "Ms. Jackson",
+    "titleExecutor": "Outkast",
+    "uidTrack": 303560,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201407/7dcd8c49a245a21258c8a2d2832ac39f.jpg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201407/5576f09a65257d9969eef47c0f2a71b1.mp3",
+    "duration": 265
+  },
+  {
+    "title": "Black Eyed Peas - My Humps (Album Version)",
+    "titleTrack": "My Humps (Album Version)",
+    "titleExecutor": "Black Eyed Peas",
+    "uidTrack": 826895,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202206/23/6bb8a2588145bbd720823bdbafa8f690.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202206/23/0673ea3d5060c6b79e26cb0bd9b3e9cb.mp3",
+    "duration": 323
+  },
+  {
+    "title": "The Pussycat Dolls - Don't Cha",
+    "titleTrack": "Don't Cha",
+    "titleExecutor": "The Pussycat Dolls",
+    "uidTrack": 808794,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202202/07/d23b7fb67d894dec7d5da93f1f054a74.jpeg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/202202/07/692537ee23d7a5c27858bdf4e3096082.mp3",
+    "duration": 269
+  },
+  {
+    "title": "Cypress Hill - Insane In The Brain",
+    "titleTrack": "Insane In The Brain",
+    "titleExecutor": "Cypress Hill",
+    "uidTrack": 614782,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201809/39/c10399aa4dd74523e7b92a4417d30b16.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/201809/39/67200739c0619859b74b12f2500fc42d.mp3",
+    "duration": 211
+  },
+  {
+    "title": "Mattafix - Big City Life",
+    "titleTrack": "Big City Life",
+    "titleExecutor": "Mattafix",
+    "uidTrack": 94026,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/201507/f6ffe8bad66fc0976f5977ea80a3816b.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201507/8217daa87f295a54a091b7e2747e2eff.mp3",
+    "duration": 233
+  },
+  {
+    "title": "Fort Minor - Believe Me",
+    "titleTrack": "Believe Me",
+    "titleExecutor": "Fort Minor",
+    "uidTrack": 700478,
+    "coverHTTP": "https://cdn1.101.ru/vardata/modules/musicdb/files/202002/06/4ec6e121db817a3b7f920116adc17eb0.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202002/06/57e06f110ea0de589cf5d0577cd567dc.mp3",
+    "duration": 35
+  },
+  {
+    "title": "Robin Thicke ft. T.I. & PHARELL - Blurred Lines",
+    "titleTrack": "Blurred Lines",
+    "titleExecutor": "Robin Thicke",
+    "uidTrack": 229821,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201807/27/95303781544f4dffac02011294e19453.jpg",
+    "audiofile": "https://cdn2.101.ru/vardata/modules/musicdb/files/201805/21/bef579384767e51a92d09a515b8ce4d2.mp3",
+    "duration": 258
+  },
+  {
+    "title": "The Pussycat Dolls - I Don't Need A Man",
+    "titleTrack": "I Don't Need A Man",
+    "titleExecutor": "The Pussycat Dolls",
+    "uidTrack": 826896,
+    "coverHTTP": "https://cdn2.101.ru/vardata/modules/musicdb/files/201812/51/93fa954ed07ce71027c11af6000b1307.jpeg",
+    "audiofile": "https://cdn0.101.ru/vardata/modules/musicdb/files/202206/23/902f3d99538f82f0924a9f70d79dece4.mp3",
+    "duration": 218
+  }
+]

@@ -12,6 +12,7 @@ import {
   checkLevelUp,
   type PlayerProgress,
 } from "./utils/levelUtils";
+import { Analytics } from "@vercel/analytics/react";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
@@ -166,6 +167,7 @@ function App() {
           difficulty={selectedCategory.difficulty}
         />
       )}
+      <Analytics />
     </div>
   );
 }
