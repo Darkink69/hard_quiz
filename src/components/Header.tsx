@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import { getLevelConfig } from "../data/levels";
 import type { PlayerProgress } from "../utils/levelUtils";
+import AboutPage from "./AboutPage";
 
 interface HeaderProps {
   globalScore: number;
@@ -16,6 +17,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+  const [showAbout, setShowAbout] = useState<boolean>(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -39,6 +41,15 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   const currentLevelConfig = getLevelConfig(playerProgress.level);
+
+  const handleOpenAbout = () => {
+    closeMenu();
+    setShowAbout(true);
+  };
+
+  const handleCloseAbout = () => {
+    setShowAbout(false);
+  };
 
   return (
     <>
@@ -194,19 +205,13 @@ const Header: React.FC<HeaderProps> = ({
             {/* Пункты меню */}
             <nav className="flex-1 flex flex-col items-center justify-center gap-4">
               <button
-                onClick={() => {
-                  closeMenu();
-                  // TODO: Открыть страницу "Подробнее"
-                }}
+                onClick={handleOpenAbout}
                 className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
               >
                 Подробнее
               </button>
               <button
-                onClick={() => {
-                  closeMenu();
-                  // TODO: Открыть страницу "Правила"
-                }}
+                onClick={handleOpenAbout}
                 className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
               >
                 Правила
@@ -237,6 +242,7 @@ const Header: React.FC<HeaderProps> = ({
           </div>
         </div>
       )}
+      {showAbout && <AboutPage onClose={handleCloseAbout} />}
     </>
   );
 };
