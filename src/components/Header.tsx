@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getLevelConfig } from "../data/levels";
 import type { PlayerProgress } from "../utils/levelUtils";
 import AboutPage from "./AboutPage";
+import RulesPage from "./RulesPage";
 
 interface HeaderProps {
   globalScore: number;
@@ -18,6 +19,7 @@ const Header: React.FC<HeaderProps> = ({
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [showAbout, setShowAbout] = useState<boolean>(false);
+  const [showRules, setShowRules] = useState<boolean>(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -49,6 +51,15 @@ const Header: React.FC<HeaderProps> = ({
 
   const handleCloseAbout = () => {
     setShowAbout(false);
+  };
+
+  const handleOpenRules = () => {
+    closeMenu();
+    setShowRules(true);
+  };
+
+  const handleCloseRules = () => {
+    setShowRules(false);
   };
 
   return (
@@ -167,7 +178,7 @@ const Header: React.FC<HeaderProps> = ({
       {/* Полноэкранное меню */}
       {isMenuOpen && (
         <div
-          className="fixed inset-0 z-50 bg-linear-to-br from-gray-900 to-purple-900 flex flex-col ibm"
+          className="fixed inset-0 z-50 min-h-screen bg-[url('/bg2.jpg')] bg-no-repeat bg-cover bg-fixed py-8 px-4 ibm"
           onClick={closeMenu}
         >
           <div
@@ -211,7 +222,7 @@ const Header: React.FC<HeaderProps> = ({
                 Подробнее
               </button>
               <button
-                onClick={handleOpenAbout}
+                onClick={handleOpenRules}
                 className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
               >
                 Правила
@@ -221,7 +232,7 @@ const Header: React.FC<HeaderProps> = ({
                   closeMenu();
                   // TODO: Открыть страницу "Настройки"
                 }}
-                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center"
+                className="text-2xl md:text-3xl text-white hover:text-purple-300 transition-colors py-3 px-8 hover:bg-white/10 rounded-xl w-full max-w-sm text-center cursor-not-allowed"
               >
                 Настройки
               </button>
@@ -231,18 +242,20 @@ const Header: React.FC<HeaderProps> = ({
             <div className="pb-8 flex justify-center">
               <button
                 onClick={() => {
-                  closeMenu();
-                  // TODO: Открыть страницу доната
+                  console.log("Donate!");
                 }}
-                className="text-xl md:text-2xl text-yellow-400 hover:text-yellow-300 transition-colors py-3 px-8 border-2 border-yellow-400/50 rounded-xl hover:bg-yellow-400/10 w-full max-w-sm text-center cursor-not-allowed"
+                className="text-xl md:text-2xl text-yellow-400 hover:text-yellow-300 transition-colors py-3 px-8 border-2 border-yellow-400/50 rounded-xl hover:bg-yellow-400/10 w-full max-w-sm text-center cursor-pointer"
               >
-                Сделать донат
+                <a href="https://pay.cloudtips.ru/p/2fa6b923" target="_blank">
+                  Сделать донат
+                </a>
               </button>
             </div>
           </div>
         </div>
       )}
       {showAbout && <AboutPage onClose={handleCloseAbout} />}
+      {showRules && <RulesPage onClose={handleCloseRules} />}
     </>
   );
 };

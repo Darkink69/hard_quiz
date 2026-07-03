@@ -539,7 +539,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   }
 
   return (
-    <div className="min-h-screen bg-[url('/bg.jpg')] bg-no-repeat bg-cover bg-fixed relative py-8 px-4">
+    <div className="min-h-screen bg-[url('/bg3.jpg')] bg-no-repeat bg-cover bg-fixed relative py-8 px-4">
       {/* Анимация очков */}
       {showScoreAnimation && roundScore !== null && (
         <div
@@ -860,7 +860,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
             onClick={onBack}
             className="mt-4 text-sm ibm text-purple-200 cursor-pointer"
           >
-            Нравится игра? Сделайте донат.
+            <a href="https://pay.cloudtips.ru/p/2fa6b923" target="_blank">
+              Нравится игра? Сделайте донат -{">"}
+            </a>
           </button>
         )}
       </div>

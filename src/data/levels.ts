@@ -34,7 +34,7 @@ export const levelConfigs: LevelConfig[] = [
   },
   {
     level: 4,
-    requiredScore: 15000,
+    requiredScore: 20000,
     requiredRecord: 1500,
     requiredCategories: 9,
     bonus: 1000,
@@ -42,15 +42,15 @@ export const levelConfigs: LevelConfig[] = [
   },
   {
     level: 5,
-    requiredScore: 20000,
-    requiredRecord: 2000,
+    requiredScore: 40000,
+    requiredRecord: 1920,
     requiredCategories: 15,
     bonus: 2000,
     title: "Маэстро",
   },
   {
     level: 6,
-    requiredScore: 30000,
+    requiredScore: 60000,
     requiredRecord: 2500,
     requiredCategories: 20,
     bonus: 3000,
@@ -58,7 +58,7 @@ export const levelConfigs: LevelConfig[] = [
   },
   {
     level: 7,
-    requiredScore: 50000,
+    requiredScore: 100000,
     requiredRecord: 2800,
     requiredCategories: 30,
     bonus: 5000,
