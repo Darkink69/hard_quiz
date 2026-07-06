@@ -77,7 +77,7 @@ const AboutPage: React.FC<AboutPageProps> = ({ onClose }) => {
                   </div>
                   <h3 className="text-white mb-1">Выберите категорию</h3>
                   <p className="text-gray-400 text-sm">
-                    {totalCategories} категорий: от дискотек 80-х до современной
+                    {totalCategories} категорий: от прошлых веков до современной
                     музыки. Плюс сложные, нишевые направления, в которых
                     разбираются единицы!
                   </p>

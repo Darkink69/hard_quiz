@@ -51,9 +51,9 @@ const RulesPage: React.FC<RulesPageProps> = ({ onClose }) => {
           <div className="space-y-6">
             {/* Основное правило */}
             <section className="bg-white/5 rounded-xl p-5">
-              <div className="flex items-start gap-4">
-                <div className="w-30">
-                  <img src="/img/kids2.png" alt="" />
+              <div className="flex-col gap-4">
+                <div className="">
+                  <img src="/img/turnTable.png" alt="" />
                 </div>
                 <div>
                   <h2 className="text-lg text-yellow-300 mb-2">
@@ -73,9 +73,9 @@ const RulesPage: React.FC<RulesPageProps> = ({ onClose }) => {
 
             {/* Время и скорость */}
             <section className="bg-white/5 rounded-xl p-5">
-              <div className="flex items-start gap-4">
-                <div className="w-24">
-                  <img src="/img/kids2.png" alt="" />
+              <div className="flex-col gap-4">
+                <div className="">
+                  <img src="/img/magnitophone.png" alt="" />
                 </div>
                 <div>
                   <h2 className="text-lg text-yellow-300 mb-2">
@@ -94,9 +94,9 @@ const RulesPage: React.FC<RulesPageProps> = ({ onClose }) => {
 
             {/* Как угадывать */}
             <section className="bg-white/5 rounded-xl p-5">
-              <div className="flex items-start gap-4">
-                <div className="w-30">
-                  <img src="/img/kids2.png" alt="" />
+              <div className="flex-col gap-4">
+                <div className="">
+                  <img src="/img/vinyl.png" alt="" />
                 </div>
                 <div>
                   <h2 className="text-lg text-yellow-300 mb-2">
@@ -157,9 +157,9 @@ const RulesPage: React.FC<RulesPageProps> = ({ onClose }) => {
 
             {/* Очки и штрафы */}
             <section className="bg-white/5 rounded-xl p-5">
-              <div className="flex items-start gap-4">
-                <div className="w-10">
-                  <img src="/img/kids2.png" alt="" />
+              <div className="flex-col gap-4">
+                <div className="">
+                  <img src="/img/cola.png" alt="" />
                 </div>
                 <div>
                   <h2 className="text-lg text-yellow-300 mb-2">
@@ -196,9 +196,9 @@ const RulesPage: React.FC<RulesPageProps> = ({ onClose }) => {
 
             {/* Категории и разнообразие */}
             <section className="bg-white/5 rounded-xl p-5">
-              <div className="flex items-start gap-4">
-                <div className="w-24">
-                  <img src="/img/kids2.png" alt="" />
+              <div className="flex-col gap-4">
+                <div className="">
+                  <img src="/img/midi.png" alt="" />
                 </div>
                 <div>
                   <h2 className="text-lg text-yellow-300 mb-2">
@@ -218,9 +218,9 @@ const RulesPage: React.FC<RulesPageProps> = ({ onClose }) => {
 
             {/* Уровни и рекорды */}
             <section className="bg-white/5 rounded-xl p-5">
-              <div className="flex items-start gap-4">
-                <div className="w-24">
-                  <img src="/img/kids2.png" alt="" />
+              <div className="flex-col gap-4">
+                <div className="">
+                  <img src="/img/joy.png" alt="" />
                 </div>
                 <div>
                   <h2 className="text-lg text-yellow-300 mb-2">
@@ -239,9 +239,9 @@ const RulesPage: React.FC<RulesPageProps> = ({ onClose }) => {
             </section>
             {/* Хитрости */}
             <section className="bg-white/5 rounded-xl p-5">
-              <div className="flex items-start gap-4">
-                <div className="w-12">
-                  <img src="/img/kids2.png" alt="" />
+              <div className="flex-col gap-4">
+                <div className="">
+                  <img src="/img/TV.png" alt="" />
                 </div>
                 <div>
                   <h2 className="text-lg text-yellow-300 mb-2">
