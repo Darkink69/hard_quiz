@@ -69,15 +69,15 @@ export const checkLevelUp = (
   const canLevelUp = hasEnoughScore && hasEnoughRecord && hasEnoughCategories;
 
   if (canLevelUp) {
-    console.log(
-      `⭐ ПРОВЕРКА УРОВНЯ: Можно повысить до ${nextLevelConfig.level}`,
-    );
-    console.log(
-      `   Требования: ${requiredScore} очков, ${requiredRecord} рекорд, ${requiredCategories} категорий`,
-    );
-    console.log(
-      `   Текущие: ${progress.totalScore} очков, ${progress.record} рекорд, ${progress.playedCategories.length} категорий`,
-    );
+    // console.log(
+    //   `⭐ ПРОВЕРКА УРОВНЯ: Можно повысить до ${nextLevelConfig.level}`,
+    // );
+    // console.log(
+    //   `   Требования: ${requiredScore} очков, ${requiredRecord} рекорд, ${requiredCategories} категорий`,
+    // );
+    // console.log(
+    //   `   Текущие: ${progress.totalScore} очков, ${progress.record} рекорд, ${progress.playedCategories.length} категорий`,
+    // );
     return {
       canLevelUp: true,
       newLevel: nextLevelConfig.level,
@@ -101,7 +101,7 @@ export const addPlayedCategory = (
   }
 
   if (!progress.playedCategories.includes(categoryId)) {
-    console.log(`📂 Добавлена категория: ${categoryId}`);
+    // console.log(`📂 Добавлена категория: ${categoryId}`);
     return {
       ...progress,
       playedCategories: [...progress.playedCategories, categoryId],
@@ -117,7 +117,7 @@ export const updateRecord = (
 ): PlayerProgress => {
   // gameScore - это чистый результат игры без бонусов
   if (gameScore > progress.record) {
-    console.log(`📈 НОВЫЙ РЕКОРД! ${gameScore} > ${progress.record}`);
+    // console.log(`📈 НОВЫЙ РЕКОРД! ${gameScore} > ${progress.record}`);
     return {
       ...progress,
       record: gameScore, // Сохраняем только результат игры, без бонусов!
@@ -132,9 +132,9 @@ export const updateTotalScore = (
   gameScore: number,
 ): PlayerProgress => {
   // gameScore - это чистый результат игры без бонусов
-  console.log(
-    `📊 Добавляем к общему счету ${gameScore} (было ${progress.totalScore})`,
-  );
+  // console.log(
+  //   `📊 Добавляем к общему счету ${gameScore} (было ${progress.totalScore})`,
+  // );
   return {
     ...progress,
     totalScore: progress.totalScore + gameScore,

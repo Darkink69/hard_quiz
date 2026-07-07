@@ -49,42 +49,42 @@ function App() {
   };
 
   const handleUpdateGlobalScore = (gameScore: number, categoryId: string) => {
-    console.log("=== НАЧАЛО ОБРАБОТКИ РЕЗУЛЬТАТА ИГРЫ ===");
-    console.log(`📊 Результат игры (без бонусов): ${gameScore}`);
-    console.log(`📂 Категория: ${categoryId}`);
+    // console.log("=== НАЧАЛО ОБРАБОТКИ РЕЗУЛЬТАТА ИГРЫ ===");
+    // console.log(`📊 Результат игры (без бонусов): ${gameScore}`);
+    // console.log(`📂 Категория: ${categoryId}`);
 
     if (!categoryId) {
-      console.warn("⚠️ categoryId не передан! Использую 'unknown'");
+      // console.warn("⚠️ categoryId не передан! Использую 'unknown'");
       categoryId = "unknown";
     }
 
     // 1. Обновляем общий счет
     const updatedScore = globalTotalScore + gameScore;
-    console.log(
-      `💰 Общий счет был: ${globalTotalScore}, стал: ${updatedScore}`,
-    );
+    // console.log(
+    //   `💰 Общий счет был: ${globalTotalScore}, стал: ${updatedScore}`,
+    // );
     setGlobalTotalScore(updatedScore);
     localStorage.setItem("musicQuizGlobalScore", updatedScore.toString());
 
     // 2. Загружаем прогресс игрока
     let progress = loadPlayerProgress();
-    console.log(`👤 Текущий уровень: ${progress.level}`);
-    console.log(`📈 Текущий рекорд: ${progress.record}`);
-    console.log(`📊 Текущий общий счет игрока: ${progress.totalScore}`);
+    // console.log(`👤 Текущий уровень: ${progress.level}`);
+    // console.log(`📈 Текущий рекорд: ${progress.record}`);
+    // console.log(`📊 Текущий общий счет игрока: ${progress.totalScore}`);
 
     // 3. Добавляем категорию в список сыгранных
     progress = addPlayedCategory(progress, categoryId);
-    console.log(`📂 Сыграно категорий: ${progress.playedCategories.length}`);
+    // console.log(`📂 Сыграно категорий: ${progress.playedCategories.length}`);
 
     // 4. Обновляем общий счет игрока (для уровней)
     progress = updateTotalScore(progress, gameScore);
-    console.log(
-      `📊 Общий счет игрока после обновления: ${progress.totalScore}`,
-    );
+    // console.log(
+    //   `📊 Общий счет игрока после обновления: ${progress.totalScore}`,
+    // );
 
     // 5. Обновляем рекорд
     progress = updateRecord(progress, gameScore);
-    console.log(`📈 Рекорд после обновления: ${progress.record}`);
+    // console.log(`📈 Рекорд после обновления: ${progress.record}`);
 
     // 6. СОХРАНЯЕМ РЕКОРД В gameHighScore ДЛЯ ОТОБРАЖЕНИЯ
     const currentHighScore = localStorage.getItem("gameHighScore");
@@ -93,25 +93,25 @@ function App() {
       : 0;
 
     if (gameScore > currentHighScoreNumber) {
-      console.log(
-        `📈 НОВЫЙ РЕКОРД В gameHighScore! ${gameScore} > ${currentHighScoreNumber}`,
-      );
+      // console.log(
+      //   `📈 НОВЫЙ РЕКОРД В gameHighScore! ${gameScore} > ${currentHighScoreNumber}`,
+      // );
       localStorage.setItem("gameHighScore", gameScore.toString());
     } else {
-      console.log(
-        `📈 Рекорд gameHighScore не обновлен: ${gameScore} <= ${currentHighScoreNumber}`,
-      );
+      // console.log(
+      //   `📈 Рекорд gameHighScore не обновлен: ${gameScore} <= ${currentHighScoreNumber}`,
+      // );
     }
 
     // 7. Проверяем повышение уровня
     const levelUpResult = checkLevelUp(progress);
-    console.log(`🔍 Проверка уровня: canLevelUp=${levelUpResult.canLevelUp}`);
+    // console.log(`🔍 Проверка уровня: canLevelUp=${levelUpResult.canLevelUp}`);
 
     if (levelUpResult.canLevelUp && levelUpResult.config) {
-      console.log(
-        `⭐ ПОВЫШЕНИЕ УРОВНЯ! Новый уровень: ${levelUpResult.newLevel}`,
-      );
-      console.log(`💰 Бонус за уровень: ${levelUpResult.bonus}`);
+      // console.log(
+      //   `⭐ ПОВЫШЕНИЕ УРОВНЯ! Новый уровень: ${levelUpResult.newLevel}`,
+      // );
+      // console.log(`💰 Бонус за уровень: ${levelUpResult.bonus}`);
 
       setLevelUpData({
         level: levelUpResult.newLevel,
@@ -120,29 +120,29 @@ function App() {
       });
 
       const scoreWithBonus = updatedScore + levelUpResult.bonus;
-      console.log(`💰 Общий счет с бонусом за уровень: ${scoreWithBonus}`);
+      // console.log(`💰 Общий счет с бонусом за уровень: ${scoreWithBonus}`);
       setGlobalTotalScore(scoreWithBonus);
       localStorage.setItem("musicQuizGlobalScore", scoreWithBonus.toString());
 
       progress.level = levelUpResult.newLevel;
       progress.totalScore += levelUpResult.bonus;
-      console.log(`📊 Общий счет игрока с бонусом: ${progress.totalScore}`);
+      // console.log(`📊 Общий счет игрока с бонусом: ${progress.totalScore}`);
     }
 
     // 8. Сохраняем прогресс
     savePlayerProgress(progress);
     setPlayerProgress(progress);
 
-    console.log("=== КОНЕЦ ОБРАБОТКИ РЕЗУЛЬТАТА ===");
-    console.log(
-      `🏆 Итоговый общий счет: ${localStorage.getItem("musicQuizGlobalScore")}`,
-    );
-    console.log(`📈 Итоговый рекорд (playerProgress): ${progress.record}`);
-    console.log(
-      `📈 Итоговый рекорд (gameHighScore): ${localStorage.getItem("gameHighScore")}`,
-    );
-    console.log(`⭐ Итоговый уровень: ${progress.level}`);
-    console.log("====================================\n");
+    // console.log("=== КОНЕЦ ОБРАБОТКИ РЕЗУЛЬТАТА ===");
+    // console.log(
+    //   `🏆 Итоговый общий счет: ${localStorage.getItem("musicQuizGlobalScore")}`,
+    // );
+    // console.log(`📈 Итоговый рекорд (playerProgress): ${progress.record}`);
+    // console.log(
+    //   `📈 Итоговый рекорд (gameHighScore): ${localStorage.getItem("gameHighScore")}`,
+    // );
+    // console.log(`⭐ Итоговый уровень: ${progress.level}`);
+    // console.log("====================================\n");
   };
 
   const clearLevelUpData = () => {

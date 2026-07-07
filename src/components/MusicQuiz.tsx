@@ -104,7 +104,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       const audio = playerRef.current.audio.current;
       audio.pause();
       audio.currentTime = 0;
-      console.log("Музыка остановлена");
+      // console.log("Музыка остановлена");
     }
   };
 
@@ -181,10 +181,10 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         }
 
         setTracks(data);
-        console.log(
-          `Загружено треков для категории "${category.name}":`,
-          data.length,
-        );
+        // console.log(
+        //   `Загружено треков для категории "${category.name}":`,
+        //   data.length,
+        // );
 
         selectRandomTrackAndOptions(data);
       } catch (error) {
@@ -232,7 +232,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     const shuffledOptions = [...options].sort(() => 0.5 - Math.random());
     setAnswerOptions(shuffledOptions);
 
-    console.log("Выбран трек для угадывания:", correctTrack.title);
+    // console.log("Выбран трек для угадывания:", correctTrack.title);
   };
 
   const preloadAudio = (url: string): Promise<void> => {
@@ -240,7 +240,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       const audio = new Audio();
 
       audio.addEventListener("canplaythrough", () => {
-        console.log("Трек полностью загружен");
+        // console.log("Трек полностью загружен");
         resolve();
       });
 
@@ -280,16 +280,16 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         clearCountdown();
         stopMusic();
 
-        console.log(`⏰ РАУНД ${currentRound + 1}: Время вышло!`);
+        // console.log(`⏰ РАУНД ${currentRound + 1}: Время вышло!`);
         const penalty = calculatePenalty(
           currentRoundConfig.points * difficulty,
         );
         const currentScore = totalScoreRef.current;
         const newScore = currentScore - penalty;
-        console.log(
-          `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
-        );
-        console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
+        // console.log(
+        //   `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
+        // );
+        // console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
 
         // Обновляем состояние
         setTotalScore(newScore);
@@ -339,7 +339,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         return;
       }
 
-      console.log("Начинаем загрузку трека...");
+      // console.log("Начинаем загрузку трека...");
       await preloadAudio(currentTrack.audiofile);
       setTrackLoadProgress(100);
 
@@ -347,7 +347,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
       const startPosition = generateRandomTime(currentTrack);
       setRandomTime(startPosition);
-      console.log(`Стартовая позиция: ${startPosition} сек`);
+      // console.log(`Стартовая позиция: ${startPosition} сек`);
 
       let attempts = 0;
       while (!playerRef.current?.audio.current && attempts < 20) {
@@ -358,7 +358,7 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       if (playerRef.current?.audio.current) {
         playerRef.current.audio.current.currentTime = startPosition;
         await playerRef.current.audio.current.play();
-        console.log("Воспроизведение успешно началось");
+        // console.log("Воспроизведение успешно началось");
 
         setHasStarted(true);
         setIsTrackLoading(false);
@@ -380,13 +380,13 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     // Берем актуальное значение из ref
     const currentScore = totalScoreRef.current;
 
-    console.log(`🔄 ПЕРЕХОД К СЛЕДУЮЩЕМУ РАУНДУ`);
-    console.log(`   Текущий раунд: ${currentRound + 1}/${rounds.length}`);
-    console.log(`   Текущий счет: ${currentScore}`);
+    // console.log(`🔄 ПЕРЕХОД К СЛЕДУЮЩЕМУ РАУНДУ`);
+    // console.log(`   Текущий раунд: ${currentRound + 1}/${rounds.length}`);
+    // console.log(`   Текущий счет: ${currentScore}`);
 
     if (isLastRound) {
-      console.log(`🏁 ИГРА ЗАВЕРШЕНА!`);
-      console.log(`   Итоговый счет: ${currentScore}`);
+      // console.log(`🏁 ИГРА ЗАВЕРШЕНА!`);
+      // console.log(`   Итоговый счет: ${currentScore}`);
 
       if (winMidSoundRef.current) {
         winMidSoundRef.current.currentTime = 0;
@@ -395,8 +395,8 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           .catch((e) => console.log("Звук не воспроизвелся:", e));
       }
 
-      console.log(`📤 Передаем результат игры в App: ${currentScore}`);
-      console.log(`📂 ID категории: ${category.id}`);
+      // console.log(`📤 Передаем результат игры в App: ${currentScore}`);
+      // console.log(`📂 ID категории: ${category.id}`);
       onUpdateGlobalScore(currentScore, category.id);
 
       setQuizCompleted(true);
@@ -439,13 +439,13 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     const currentScore = totalScoreRef.current;
 
     if (option.isCorrect) {
-      console.log(`✅ РАУНД ${currentRound + 1}: Правильный ответ!`);
+      // console.log(`✅ РАУНД ${currentRound + 1}: Правильный ответ!`);
       const roundPointsWithMultiplier = currentRoundConfig.points * difficulty;
-      console.log(
-        `   База: ${currentRoundConfig.points} × ${difficulty} = ${roundPointsWithMultiplier}`,
-      );
+      // console.log(
+      //   `   База: ${currentRoundConfig.points} × ${difficulty} = ${roundPointsWithMultiplier}`,
+      // );
       const newScore = currentScore + roundPointsWithMultiplier;
-      console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
+      // console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
 
       setTotalScore(newScore);
       totalScoreRef.current = newScore;
@@ -455,13 +455,13 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         nextRound();
       }, 1500);
     } else {
-      console.log(`❌ РАУНД ${currentRound + 1}: Неправильный ответ!`);
+      // console.log(`❌ РАУНД ${currentRound + 1}: Неправильный ответ!`);
       const penalty = calculatePenalty(currentRoundConfig.points * difficulty);
-      console.log(
-        `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
-      );
+      // console.log(
+      //   `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
+      // );
       const newScore = currentScore - penalty;
-      console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
+      // console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
 
       setTotalScore(newScore);
       totalScoreRef.current = newScore;
