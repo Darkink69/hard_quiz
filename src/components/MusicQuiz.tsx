@@ -27,6 +27,13 @@ interface MusicQuizProps {
   difficulty: number;
 }
 
+// Функция для очистки ссылок от cdnX.
+const cleanUrl = (url: string): string => {
+  if (!url) return url;
+  // Заменяем cdn0., cdn1., cdn2. и т.д. на пустую строку
+  return url.replace(/\/\/cdn\d+\./, "//");
+};
+
 const MusicQuiz: React.FC<MusicQuizProps> = ({
   category,
   onBack,
@@ -104,7 +111,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       const audio = playerRef.current.audio.current;
       audio.pause();
       audio.currentTime = 0;
-      // console.log("Музыка остановлена");
     }
   };
 
@@ -180,13 +186,15 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           throw new Error("Файл с треками пуст или имеет неверный формат");
         }
 
-        setTracks(data);
-        // console.log(
-        //   `Загружено треков для категории "${category.name}":`,
-        //   data.length,
-        // );
+        // Очищаем ссылки в треках от cdnX.
+        const cleanedData = data.map((track) => ({
+          ...track,
+          coverHTTP: cleanUrl(track.coverHTTP),
+          audiofile: cleanUrl(track.audiofile),
+        }));
 
-        selectRandomTrackAndOptions(data);
+        setTracks(cleanedData);
+        selectRandomTrackAndOptions(cleanedData);
       } catch (error) {
         console.error("Ошибка при загрузке треков:", error);
         setError(
@@ -231,8 +239,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
     const shuffledOptions = [...options].sort(() => 0.5 - Math.random());
     setAnswerOptions(shuffledOptions);
-
-    // console.log("Выбран трек для угадывания:", correctTrack.title);
   };
 
   const preloadAudio = (url: string): Promise<void> => {
@@ -240,7 +246,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       const audio = new Audio();
 
       audio.addEventListener("canplaythrough", () => {
-        // console.log("Трек полностью загружен");
         resolve();
       });
 
@@ -280,18 +285,12 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         clearCountdown();
         stopMusic();
 
-        // console.log(`⏰ РАУНД ${currentRound + 1}: Время вышло!`);
         const penalty = calculatePenalty(
           currentRoundConfig.points * difficulty,
         );
         const currentScore = totalScoreRef.current;
         const newScore = currentScore - penalty;
-        // console.log(
-        //   `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
-        // );
-        // console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
 
-        // Обновляем состояние
         setTotalScore(newScore);
         totalScoreRef.current = newScore;
 
@@ -339,7 +338,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         return;
       }
 
-      // console.log("Начинаем загрузку трека...");
       await preloadAudio(currentTrack.audiofile);
       setTrackLoadProgress(100);
 
@@ -347,7 +345,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
 
       const startPosition = generateRandomTime(currentTrack);
       setRandomTime(startPosition);
-      // console.log(`Стартовая позиция: ${startPosition} сек`);
 
       let attempts = 0;
       while (!playerRef.current?.audio.current && attempts < 20) {
@@ -358,7 +355,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
       if (playerRef.current?.audio.current) {
         playerRef.current.audio.current.currentTime = startPosition;
         await playerRef.current.audio.current.play();
-        // console.log("Воспроизведение успешно началось");
 
         setHasStarted(true);
         setIsTrackLoading(false);
@@ -377,17 +373,9 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
   };
 
   const nextRound = () => {
-    // Берем актуальное значение из ref
     const currentScore = totalScoreRef.current;
 
-    // console.log(`🔄 ПЕРЕХОД К СЛЕДУЮЩЕМУ РАУНДУ`);
-    // console.log(`   Текущий раунд: ${currentRound + 1}/${rounds.length}`);
-    // console.log(`   Текущий счет: ${currentScore}`);
-
     if (isLastRound) {
-      // console.log(`🏁 ИГРА ЗАВЕРШЕНА!`);
-      // console.log(`   Итоговый счет: ${currentScore}`);
-
       if (winMidSoundRef.current) {
         winMidSoundRef.current.currentTime = 0;
         winMidSoundRef.current
@@ -395,8 +383,6 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
           .catch((e) => console.log("Звук не воспроизвелся:", e));
       }
 
-      // console.log(`📤 Передаем результат игры в App: ${currentScore}`);
-      // console.log(`📂 ID категории: ${category.id}`);
       onUpdateGlobalScore(currentScore, category.id);
 
       setQuizCompleted(true);
@@ -435,17 +421,11 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
     }));
     setAnswerOptions(updatedOptions);
 
-    // Используем текущее значение из ref
     const currentScore = totalScoreRef.current;
 
     if (option.isCorrect) {
-      // console.log(`✅ РАУНД ${currentRound + 1}: Правильный ответ!`);
       const roundPointsWithMultiplier = currentRoundConfig.points * difficulty;
-      // console.log(
-      //   `   База: ${currentRoundConfig.points} × ${difficulty} = ${roundPointsWithMultiplier}`,
-      // );
       const newScore = currentScore + roundPointsWithMultiplier;
-      // console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
 
       setTotalScore(newScore);
       totalScoreRef.current = newScore;
@@ -455,13 +435,8 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
         nextRound();
       }, 1500);
     } else {
-      // console.log(`❌ РАУНД ${currentRound + 1}: Неправильный ответ!`);
       const penalty = calculatePenalty(currentRoundConfig.points * difficulty);
-      // console.log(
-      //   `   Штраф: 10% от ${currentRoundConfig.points * difficulty} = ${penalty}`,
-      // );
       const newScore = currentScore - penalty;
-      // console.log(`   Счет был: ${currentScore}, стал: ${newScore}`);
 
       setTotalScore(newScore);
       totalScoreRef.current = newScore;
@@ -666,9 +641,8 @@ const MusicQuiz: React.FC<MusicQuizProps> = ({
                       </p>
                     </div>
                     <div className="inline-flex flex-col items-center gap-3">
-                      {/* <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-500"></div> */}
                       <div className="w-10">
-                        <img src="/loading.gif" alt="" />
+                        <img src="/loading.gif" alt="Загрузка" />
                       </div>
                       <div className="text-gray-600 ibm">
                         Загрузка задания... {Math.round(trackLoadProgress)}%
